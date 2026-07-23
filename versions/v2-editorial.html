@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keegan Selby — Investor · Builder · Engineer</title>
+<meta name="description" content="Keegan Selby — Co-Founder & GP of Fourth Revolution Capital. Investor-operator spanning frontier technology, digital assets, and venture building.">
+<meta property="og:title" content="Keegan Selby — Investor · Builder · Engineer">
+<meta property="og:description" content="Co-Founder & GP at Fourth Revolution Capital. AI, digital assets, robotics, venture building.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.keeganselby.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='none' stroke='%234E85BF' stroke-width='6'/><text x='50' y='66' font-size='44' fill='%23f5f5f5' text-anchor='middle' font-family='Georgia' font-style='italic'>KS</text></svg>">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
+<style>
+:root{
+  --bg:hsl(0 0% 4%); --surface:hsl(0 0% 8%); --text:hsl(0 0% 96%);
+  --muted:hsl(0 0% 53%); --stroke:hsl(0 0% 12%);
+  --grad:linear-gradient(90deg,#89AACC 0%,#4E85BF 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
+::selection{background:#4E85BF;color:#fff}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:hsl(0 0% 16%);border-radius:6px}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.eyebrow{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.3em}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+@media(min-width:768px){.container{padding:0 40px}}
+
+@keyframes scrollDown{0%{transform:translateY(-100%)}100%{transform:translateY(200%)}}
+@keyframes roleFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ---------- loading ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .lbl{position:absolute;top:32px;left:32px;opacity:0;transform:translateY(-20px);animation:roleFade .8s ease forwards}
+#loader .word{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(40px,7vw,72px);color:hsl(0 0% 96% / .8)}
+#loader .count{position:absolute;bottom:48px;right:40px;font-family:'Instrument Serif',serif;font-size:clamp(64px,11vw,140px);font-variant-numeric:tabular-nums;line-height:1}
+#loader .bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:hsl(0 0% 12% / .5)}
+#loader .bar i{display:block;height:100%;background:var(--grad);transform-origin:left;transform:scaleX(0);box-shadow:0 0 8px rgba(137,170,204,.35)}
+
+/* ---------- navbar ---------- */
+#nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;padding:16px 16px 0}
+@media(min-width:768px){#nav{padding-top:24px}}
+#nav .pill{display:inline-flex;align-items:center;border-radius:999px;backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / .1);background:hsl(0 0% 8% / .85);padding:8px;transition:box-shadow .3s}
+#nav.scrolled .pill{box-shadow:0 4px 14px rgba(0,0,0,.35)}
+#nav .logo{width:36px;height:36px;border-radius:50%;background:var(--grad);padding:1.5px;margin-right:4px;transition:transform .3s;cursor:pointer;display:block}
+#nav .logo:hover{transform:scale(1.1)}
+#nav .logo i{width:100%;height:100%;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:13px}
+#nav .div{width:1px;height:20px;background:var(--stroke);margin:0 6px}
+@media(max-width:520px){#nav .div{display:none}}
+#nav .lnk{font-size:13px;border-radius:999px;padding:8px 16px;color:var(--muted);transition:color .25s,background .25s}
+#nav .lnk:hover{color:var(--text);background:hsl(0 0% 12% / .5)}
+#nav .lnk.active{color:var(--text);background:hsl(0 0% 12% / .5)}
+.gbtn{position:relative;border-radius:999px;display:inline-block}
+.gbtn .ring{position:absolute;inset:-2px;border-radius:999px;background:var(--grad);background-size:200% 200%;animation:gradShift 6s ease infinite;opacity:0;transition:opacity .3s}
+.gbtn:hover .ring{opacity:1}
+.gbtn .in{position:relative;display:inline-flex;align-items:center;gap:6px;background:hsl(0 0% 8%);border-radius:999px;padding:8px 16px;font-size:13px;backdrop-filter:blur(12px)}
+
+/* ---------- hero ---------- */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#hero video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover;transform:translate(-50%,-50%);opacity:0;transition:opacity 1.2s ease}
+#hero video.live,#contact video.live{opacity:1}
+@keyframes drift1{0%,100%{transform:translate(-20%,-10%) scale(1)}50%{transform:translate(15%,12%) scale(1.25)}}
+@keyframes drift2{0%,100%{transform:translate(18%,14%) scale(1.15)}50%{transform:translate(-12%,-8%) scale(.95)}}
+.bgfx{position:absolute;inset:0;overflow:hidden}
+.bgfx::before,.bgfx::after{content:"";position:absolute;width:70vmax;height:70vmax;border-radius:50%;filter:blur(80px)}
+.bgfx::before{top:-20%;left:-10%;background:radial-gradient(circle,rgba(78,133,191,.22),transparent 60%);animation:drift1 16s ease-in-out infinite}
+.bgfx::after{bottom:-25%;right:-15%;background:radial-gradient(circle,rgba(137,170,204,.14),transparent 60%);animation:drift2 20s ease-in-out infinite}
+#hero .ov{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+#hero .fade{position:absolute;bottom:0;left:0;right:0;height:192px;background:linear-gradient(to top,var(--bg),transparent)}
+#hero .content{position:relative;z-index:10;text-align:center;padding:0 20px}
+#hero h1{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(60px,12vw,150px);line-height:.9;letter-spacing:-.02em;margin-bottom:24px}
+#hero .role-line{font-size:clamp(16px,2.4vw,22px);color:var(--muted);margin-bottom:18px}
+#hero .role-line .role{font-family:'Instrument Serif',serif;font-style:italic;color:var(--text);display:inline-block;animation:roleFade .4s ease-out}
+#hero .desc{font-size:15px;color:var(--muted);max-width:430px;margin:0 auto 48px;line-height:1.65}
+#hero .ctas{display:inline-flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn-solid,.btn-line{position:relative;border-radius:999px;font-size:14px;padding:14px 28px;transition:transform .3s;display:inline-block}
+.btn-solid:hover,.btn-line:hover{transform:scale(1.05)}
+.btn-solid{background:var(--text);color:var(--bg);font-weight:500}
+.btn-solid:hover{background:var(--bg);color:var(--text);box-shadow:0 0 0 2px #4E85BF}
+.btn-line{border:2px solid var(--stroke);background:var(--bg);color:var(--text)}
+.btn-line:hover{border-color:#4E85BF}
+.name-reveal,.blur-in{opacity:0}
+#hero .scrollind{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px}
+#hero .scrollind .t{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.2em}
+#hero .scrollind .line{width:1px;height:40px;background:var(--stroke);position:relative;overflow:hidden}
+#hero .scrollind .line i{position:absolute;top:0;left:0;width:100%;height:50%;background:var(--grad);animation:scrollDown 1.5s ease-in-out infinite}
+
+/* ---------- sections shared ---------- */
+section{padding:64px 0}
+@media(min-width:768px){section{padding:96px 0}}
+.sec-head{margin-bottom:48px}
+.sec-head .eb{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.sec-head .eb i{width:32px;height:1px;background:var(--stroke);display:block}
+.sec-head h2{font-size:clamp(34px,5vw,56px);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.sec-head h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.sec-head p{color:var(--muted);font-size:15px;margin-top:14px;max-width:480px;line-height:1.6}
+.sec-head .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.25,.1,.25,1),transform 1s cubic-bezier(.25,.1,.25,1)}
+.rv.on{opacity:1;transform:none}
+
+/* ---------- bento ---------- */
+.bento{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:768px){.bento{grid-template-columns:repeat(12,1fr);gap:24px}
+ .span7{grid-column:span 7}.span5{grid-column:span 5}}
+.card{position:relative;background:var(--surface);border:1px solid var(--stroke);border-radius:24px;overflow:hidden;display:block;aspect-ratio:16/11}
+.card .img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,.1,.25,1)}
+.card:hover .img{transform:scale(1.05)}
+.card .half{position:absolute;inset:0;background-image:radial-gradient(circle,#000 1px,transparent 1px);background-size:4px 4px;opacity:.2;mix-blend-mode:multiply}
+.card .hov{position:absolute;inset:0;background:hsl(0 0% 4% / .7);opacity:0;transition:opacity .4s;backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center}
+.card:hover .hov{opacity:1}
+.card .hovpill{position:relative;border-radius:999px;padding:2px;background:var(--grad);background-size:200% 200%;animation:gradShift 6s ease infinite}
+.card .hovpill i{display:flex;align-items:center;gap:8px;background:#fff;color:#111;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:500;font-style:normal}
+.card .hovpill em{font-family:'Instrument Serif',serif;font-style:italic}
+.card .tag{position:absolute;top:18px;left:20px;z-index:2;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:hsl(0 0% 100% / .85);background:hsl(0 0% 4% / .5);backdrop-filter:blur(8px);padding:6px 12px;border-radius:999px}
+.card .grad-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.card .grad-bg span{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(34px,5vw,64px);color:hsl(0 0% 96%/.9)}
+
+/* ---------- journal ---------- */
+.journal{display:flex;flex-direction:column;gap:16px}
+.jrow{display:flex;align-items:center;gap:20px;padding:16px;background:hsl(0 0% 8% / .3);border:1px solid var(--stroke);border-radius:40px;transition:background .3s}
+.jrow:hover{background:var(--surface)}
+.jrow .jimg{width:72px;height:72px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0;border:1px solid var(--stroke)}
+.jrow .jt{flex:1;min-width:0}
+.jrow h4{font-size:clamp(16px,2.2vw,21px);font-weight:500;margin-bottom:4px}
+.jrow .jm{font-size:12px;color:var(--muted)}
+.jrow .arrow{color:var(--muted);font-size:18px;transition:transform .3s,color .3s;padding-right:14px}
+.jrow:hover .arrow{transform:translate(3px,-3px);color:#89AACC}
+@media(max-width:560px){.jrow .jimg{width:54px;height:54px}}
+
+/* ---------- explorations parallax ---------- */
+#explore{position:relative;min-height:240vh;padding:0}
+#explore .pinwrap{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;z-index:10}
+#explore .cols{position:absolute;inset:0;z-index:20;pointer-events:none}
+#explore .colgrid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:0 28px}
+@media(min-width:768px){#explore .colgrid{gap:160px}}
+#explore .col{display:flex;flex-direction:column;gap:80px;align-items:center}
+#explore .col:first-child{margin-top:40vh}
+.exp{aspect-ratio:1;width:100%;max-width:320px;border-radius:20px;background-size:cover;background-position:center;border:1px solid var(--stroke);pointer-events:auto;cursor:pointer;transition:transform .4s;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.exp:hover{transform:scale(1.03)!important}
+
+/* ---------- footer ---------- */
+#contact{position:relative;padding:80px 0 40px;overflow:hidden}
+#contact video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;object-fit:cover;transform:translate(-50%,-50%) scaleY(-1);opacity:0;transition:opacity 1.2s ease}
+#contact .ov{position:absolute;inset:0;background:rgba(0,0,0,.68)}
+#contact .top-fade{position:absolute;top:0;left:0;right:0;height:160px;background:linear-gradient(to bottom,var(--bg),transparent)}
+#contact .inner{position:relative;z-index:5}
+.marquee{overflow:hidden;white-space:nowrap;margin-bottom:64px}
+.marquee .track{display:inline-block;will-change:transform}
+.marquee span{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(44px,8vw,110px);color:hsl(0 0% 96%/.92);padding-right:20px}
+#contact .cta{text-align:center;margin-bottom:90px}
+#contact .cta p{color:var(--muted);font-size:14px;margin-bottom:24px;text-transform:uppercase;letter-spacing:.25em}
+#contact .ebtn{position:relative;border-radius:999px;display:inline-block}
+#contact .ebtn .ring{position:absolute;inset:-2px;border-radius:999px;background:var(--grad);background-size:200% 200%;animation:gradShift 6s ease infinite;opacity:0;transition:opacity .3s}
+#contact .ebtn:hover .ring{opacity:1}
+#contact .ebtn .in{position:relative;background:var(--surface);border:1px solid var(--stroke);border-radius:999px;padding:18px 36px;font-size:clamp(16px,2.6vw,24px);display:inline-flex;align-items:center;gap:12px}
+#contact .bar{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid hsl(0 0% 100%/.08);padding-top:28px}
+#contact .socials{display:flex;gap:22px;font-size:13px;color:var(--muted)}
+#contact .socials a:hover{color:var(--text)}
+#contact .avail{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+#contact .avail i{width:8px;height:8px;border-radius:50%;background:#39d98a;animation:pulse 2s ease infinite;box-shadow:0 0 10px rgba(57,217,138,.6)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="lbl eyebrow">Portfolio</div>
+  <div class="word" id="loadWord">Invest</div>
+  <div class="count" id="loadCount">000</div>
+  <div class="bar"><i id="loadBar"></i></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="pill">
+    <a class="logo" href="#hero"><i>KS</i></a>
+    <span class="div"></span>
+    <a class="lnk active" href="#hero">Home</a>
+    <a class="lnk" href="#work">Work</a>
+    <a class="lnk" href="#journal">Writing</a>
+    <span class="div"></span>
+    <a class="gbtn" href="mailto:keegan@selby.studio"><span class="ring"></span><span class="in">Say hi <span>↗</span></span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="bgfx"></div>
+  <video id="heroVid" autoplay muted loop playsinline></video>
+  <div class="ov"></div><div class="fade"></div>
+  <div class="content">
+    <div class="eyebrow blur-in" style="margin-bottom:32px">Collection '26</div>
+    <h1 class="name-reveal">Keegan Selby</h1>
+    <div class="role-line blur-in">An <span class="role" id="roleWord">Investor</span> lives in Los Angeles.</div>
+    <p class="desc blur-in">Backing and building the Fourth Industrial Revolution — from digital-asset funds and frontier-tech venture to AI-native products shipped in-house.</p>
+    <div class="ctas blur-in">
+      <a class="btn-solid" href="#work">See Work</a>
+      <a class="btn-line" href="mailto:keegan@selby.studio">Reach out…</a>
+    </div>
+  </div>
+  <div class="scrollind"><div class="t">Scroll</div><div class="line"><i></i></div></div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="sec-head rv">
+      <div class="row">
+        <div>
+          <div class="eb"><i></i><span class="eyebrow">Selected Work</span></div>
+          <h2>Featured <em>ventures</em></h2>
+          <p>From a two-fund investment firm to consumer products designed, engineered, and launched in-house.</p>
+        </div>
+        <a class="gbtn" href="https://www.fourthrevolution.capital/" target="_blank" rel="noopener"><span class="ring"></span><span class="in">View 4RC <span>→</span></span></a>
+      </div>
+    </div>
+    <div class="bento">
+      <a class="card span7 rv" href="https://www.fourthrevolution.capital/" target="_blank" rel="noopener">
+        <div class="img" style="background-image:linear-gradient(135deg,#0e1622,#15233a 55%,#0a0a0a)"></div>
+        <div class="grad-bg"><img src="https://cdn.prod.website-files.com/65d3ee10d4ba455f44b13810/65dbff630147fd87954b0227_frc-heading.svg" alt="Fourth Revolution Capital" style="width:55%;max-width:380px;height:auto"></div>
+        <div class="half"></div><span class="tag">Investment Firm · GP</span>
+        <div class="hov"><div class="hovpill"><i>View — <em>4RC</em></i></div></div>
+      </a>
+      <a class="card span5 rv" href="https://www.pupmate.uk" target="_blank" rel="noopener">
+        <div class="img" style="background-image:url('https://www.pupmate.uk/hero-puppies.jpg')"></div>
+        <div class="half"></div><span class="tag">Marketplace · Live</span>
+        <div class="hov"><div class="hovpill"><i>View — <em>PupMate</em></i></div></div>
+      </a>
+      <a class="card span5 rv" href="https://everbound.us" target="_blank" rel="noopener">
+        <div class="img" style="background-image:linear-gradient(160deg,#1b1430,#2a1f4d 50%,#0a0a0a)"></div>
+        <div class="grad-bg"><span>Everbound</span></div>
+        <div class="half"></div><span class="tag">Consumer · Live</span>
+        <div class="hov"><div class="hovpill"><i>View — <em>Everbound</em></i></div></div>
+      </a>
+      <a class="card span7 rv" href="https://www.youtube.com/watch?v=kL751DTr3vc" target="_blank" rel="noopener">
+        <div class="img" style="background-image:url('https://img.youtube.com/vi/kL751DTr3vc/maxresdefault.jpg')"></div>
+        <div class="half"></div><span class="tag">Media · Podcast</span>
+        <div class="hov"><div class="hovpill"><i>Watch — <em>$100M Crypto Portfolio</em></i></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section id="journal">
+  <div class="container">
+    <div class="sec-head rv">
+      <div class="row">
+        <div>
+          <div class="eb"><i></i><span class="eyebrow">Journal</span></div>
+          <h2>Recent <em>thoughts</em></h2>
+          <p>Markets, machines, and the cosmos — essays and research.</p>
+        </div>
+        <a class="gbtn" href="https://medium.com/@keeganrayselby" target="_blank" rel="noopener"><span class="ring"></span><span class="in">View all <span>→</span></span></a>
+      </div>
+    </div>
+    <div class="journal">
+      <a class="jrow rv" href="https://medium.com/@keeganrayselby/khype-the-hyperliquid-lst-61f349ef5dd0" target="_blank" rel="noopener">
+        <div class="jimg" style="background-image:linear-gradient(135deg,#89AACC,#4E85BF)"></div>
+        <div class="jt"><h4>kHYPE — The Hyperliquid LST</h4><div class="jm">Medium · Jul 2025 · 6 min read</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="jrow rv" href="papers/cosmic-karma.pdf" target="_blank">
+        <div class="jimg" style="background-image:linear-gradient(135deg,#2b2350,#0e1622)"></div>
+        <div class="jt"><h4>Cosmic Karma</h4><div class="jm">Paper · Mar 2025 · physics, ecology &amp; the circle of life</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="jrow rv" href="https://medium.com/@keeganrayselby/crypto-predictions-for-2025-03054f7645d6" target="_blank" rel="noopener">
+        <div class="jimg" style="background-image:linear-gradient(135deg,#1d3a2b,#0a0a0a)"></div>
+        <div class="jt"><h4>Crypto Predictions for 2025</h4><div class="jm">Medium · Dec 2024 · 8 min read</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="jrow rv" href="papers/where-is-everybody.pdf" target="_blank">
+        <div class="jimg" style="background-image:linear-gradient(135deg,#0e1622,#3a2a15)"></div>
+        <div class="jt"><h4>Where is Everybody?</h4><div class="jm">Paper · Nov 2014 · the Drake Equation &amp; Fermi Paradox</div></div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORATIONS -->
+<section id="explore">
+  <div class="pinwrap" id="pinTarget">
+    <div>
+      <div class="eb" style="justify-content:center;display:flex;align-items:center;gap:12px;margin-bottom:18px"><i style="width:32px;height:1px;background:var(--stroke);display:block"></i><span class="eyebrow">Explorations</span></div>
+      <h2 style="font-size:clamp(34px,5vw,56px);font-weight:600;letter-spacing:-.02em">Off the <em class="serif">desk</em></h2>
+      <p style="color:var(--muted);font-size:15px;margin:14px auto 0;max-width:420px;line-height:1.6">Flying, surfing, music, and machines — the field notes between deals.</p>
+    </div>
+  </div>
+  <div class="cols">
+    <div class="colgrid">
+      <div class="col" id="colL">
+        <a class="exp" href="https://www.youtube.com/watch?v=xUF8yL84xEA" target="_blank" rel="noopener" style="background-image:url('https://img.youtube.com/vi/xUF8yL84xEA/hqdefault.jpg');transform:rotate(-3deg)"></a>
+        <a class="exp" href="https://www.pupmate.uk" target="_blank" rel="noopener" style="background-image:url('https://www.pupmate.uk/hero-puppies.jpg');transform:rotate(2deg)"></a>
+        <a class="exp" href="https://www.youtube.com/watch?v=kL751DTr3vc" target="_blank" rel="noopener" style="background-image:url('https://img.youtube.com/vi/kL751DTr3vc/hqdefault.jpg');transform:rotate(-2deg)"></a>
+      </div>
+      <div class="col" id="colR">
+        <a class="exp" href="https://www.youtube.com/watch?v=R2P5cviUZg0&list=PLDw00zUyoRmZz2wat41PU_LOEi4ndPU8b" target="_blank" rel="noopener" style="background-image:url('https://img.youtube.com/vi/R2P5cviUZg0/hqdefault.jpg');transform:rotate(3deg)"></a>
+        <a class="exp" href="papers/cosmic-karma.pdf" target="_blank" style="background-image:linear-gradient(135deg,#1b1430,#0e1622);transform:rotate(-2deg);display:flex;align-items:center;justify-content:center"><span class="serif" style="font-size:26px;color:hsl(0 0% 96%/.85)">Cosmic Karma</span></a>
+        <a class="exp" href="https://medium.com/@keeganrayselby" target="_blank" rel="noopener" style="background-image:linear-gradient(135deg,#15233a,#0a0a0a);transform:rotate(2deg);display:flex;align-items:center;justify-content:center"><span class="serif" style="font-size:26px;color:hsl(0 0% 96%/.85)">Essays</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
+  <div class="bgfx"></div>
+  <video id="footVid" autoplay muted loop playsinline></video>
+  <div class="ov"></div><div class="top-fade"></div>
+  <div class="inner">
+    <div class="marquee"><div class="track" id="mtrack"></div></div>
+    <div class="cta">
+      <p>Open channel</p>
+      <a class="ebtn" href="mailto:keegan@selby.studio"><span class="ring"></span><span class="in">keegan@selby.studio <span>↗</span></span></a>
+    </div>
+    <div class="container">
+      <div class="bar">
+        <div class="socials">
+          <a href="https://x.com/keegan_selby" target="_blank" rel="noopener">X</a>
+          <a href="https://medium.com/@keeganrayselby" target="_blank" rel="noopener">Medium</a>
+          <a href="https://www.fourthrevolution.capital/" target="_blank" rel="noopener">4RC</a>
+        </div>
+        <div class="avail"><i></i> Available for the future</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const HLS_SRC='https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8';
+function attach(v){if(window.Hls&&Hls.isSupported()){const h=new Hls();h.loadSource(HLS_SRC);h.attachMedia(v);}else if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=HLS_SRC;}
+v.addEventListener('playing',()=>{if(v.currentTime>0||v.readyState>=2)v.classList.add('live');});
+v.addEventListener('timeupdate',function tu(){if(v.currentTime>0.1){v.classList.add('live');v.removeEventListener('timeupdate',tu);}});}
+attach(document.getElementById('heroVid'));attach(document.getElementById('footVid'));
+
+/* loader */
+(()=>{const words=['Invest','Build','Engineer'];let wi=0;
+const wordEl=document.getElementById('loadWord'),cEl=document.getElementById('loadCount'),bar=document.getElementById('loadBar');
+const wInt=setInterval(()=>{wi=(wi+1)%words.length;wordEl.style.animation='none';void wordEl.offsetWidth;wordEl.style.animation='roleFade .4s ease-out';wordEl.textContent=words[wi];},900);
+const t0=performance.now(),DUR=2700;
+function tick(t){const p=Math.min(1,(t-t0)/DUR);const c=Math.round(p*100);
+cEl.textContent=String(c).padStart(3,'0');bar.style.transform='scaleX('+(c/100)+')';
+if(p<1){requestAnimationFrame(tick);}else{clearInterval(wInt);setTimeout(()=>{document.getElementById('loader').classList.add('done');heroIn();},400);}}
+requestAnimationFrame(tick);})();
+
+/* hero entrance */
+function heroIn(){const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+tl.to('.name-reveal',{opacity:1,y:0,duration:1.2,startAt:{y:50}},.1)
+ .to('.blur-in',{opacity:1,y:0,filter:'blur(0px)',duration:1,stagger:.1,startAt:{y:20,filter:'blur(10px)'}},.3);}
+
+/* role cycle */
+(()=>{const roles=['Investor','Builder','Engineer','Founder'];let i=0;const el=document.getElementById('roleWord');
+setInterval(()=>{i=(i+1)%roles.length;el.style.animation='none';void el.offsetWidth;el.style.animation='roleFade .4s ease-out';el.textContent=roles[i];
+el.previousSibling.textContent=(roles[i]==='Investor'||roles[i]==='Engineer')?'An ':'A ';},2000);})();
+
+/* nav scroll + active */
+addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>100);},{passive:true});
+const lnks=document.querySelectorAll('#nav .lnk');
+lnks.forEach(l=>l.addEventListener('click',()=>{lnks.forEach(x=>x.classList.remove('active'));l.classList.add('active');}));
+
+/* reveals */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{rootMargin:'-80px',threshold:.05});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* explorations pin + parallax */
+ScrollTrigger.create({trigger:'#explore',start:'top top',end:'bottom bottom',pin:'#pinTarget',pinSpacing:false});
+gsap.to('#colL',{y:-560,ease:'none',scrollTrigger:{trigger:'#explore',start:'top bottom',end:'bottom top',scrub:true}});
+gsap.to('#colR',{y:-260,ease:'none',scrollTrigger:{trigger:'#explore',start:'top bottom',end:'bottom top',scrub:true}});
+
+/* marquee */
+(()=>{const tr=document.getElementById('mtrack');let s='';for(let i=0;i<10;i++)s+='<span>BUILDING THE FUTURE •</span>';tr.innerHTML=s+s;
+gsap.to(tr,{xPercent:-50,duration:40,ease:'none',repeat:-1});})();
+</script>
+</body>
+</html>
