@@ -256,6 +256,16 @@ body.konami-roll{animation:barrel 1.6s cubic-bezier(.45,0,.55,1)}
 /* idle abduction */
 body.abduct{cursor:none}
 
+/* light mode */
+body.light{--bg:#f4f2ee;--bg2:#eceae4;--panel:#ffffff;--line:#ddd6cb;--txt:#1a1917;--dim:#5c5952;--faint:#a39d92;--acc-dim:rgba(255,92,31,.12)}
+body.light .statusbar{background:rgba(244,242,238,.85)}
+body.light .grid-overlay{background-image:linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px)}
+body.light section[style*="background"]{background:rgba(250,249,246,.85)!important}
+body.light .ticker{background:rgba(240,238,232,.8)}
+body.light #scoreHud{background:rgba(255,255,255,.8);border-color:var(--line)}
+body.light ::-webkit-scrollbar-track{background:#eceae4}
+body.light ::-webkit-scrollbar-thumb{background:#c9c3b8}
+body.light .film .thumb img{filter:grayscale(15%) contrast(1.02)}
 /* boring mode */
 body.boring{--bg:#ffffff;--bg2:#f6f6f6;--panel:#fafafa;--line:#ddd;--txt:#191919;--dim:#555;--faint:#999;
   --acc:#333;--acc-dim:#ececec}
@@ -300,6 +310,7 @@ footer .a{color:var(--acc)}
     <a href="#frc">4RC</a><a href="#record">Record</a><a href="#studio">Studio</a><a href="#writing">Writing</a><a href="#films">Films</a><a href="#contact">Contact</a>
   </nav>
   <div class="hctrls">
+    <button id="themeBtn" class="hbtn" onclick="toggleTheme()">☀ Light</button>
     <button id="sndBtn" class="hbtn" onclick="toggleSnd()">Snd Off</button>
     <button id="chaosBtn" class="hbtn" onclick="toggleChaos()">▲ Max Chaos</button>
     <button id="boringBtn" class="hbtn" onclick="toggleBoring()">Boring Mode</button>
@@ -449,12 +460,6 @@ footer .a{color:var(--acc)}
       <p>Personalized children's storybooks starring your little one in magical adventures they'll never forget — AI-crafted, print-quality keepsakes.</p>
       <span class="go">Visit Site</span>
     </a>
-    <a class="proj rv" href="https://encoreplugin.com" target="_blank" rel="noopener">
-      <div class="ptag"><span>AI Subscription · Live</span><span class="url">encoreplugin.com</span></div>
-      <h3>Encore</h3>
-      <p>The end-of-week surprise builder for Claude — it spends your unused weekly usage on one finished deliverable the night before your cap resets, then takes a bow. Also plays ChatGPT, Gemini &amp; Perplexity.</p>
-      <span class="go">Visit Site</span>
-    </a>
   </div>
 </section>
 
@@ -552,6 +557,7 @@ footer .a{color:var(--acc)}
 // ----- cosmos: parallax starfield + orbital mechanics + comets -----
 const cv=document.getElementById('cosmos'),cx=cv.getContext('2d');
 const DPR=Math.min(devicePixelRatio||1,2);
+let INK='232,230,225';
 let W,H,stars=[],orbits=[],comets=[],sats=[],locks=[],links=[],ufos=[],lasers=[],sparks=[],rain=[],trail=[],mouse={x:-9999,y:-9999},mx=0,my=0,nextComet=2500,nextLock=1800,nextBeam=5000,nextLaser=3200;
 function newUfo(k){return {x:Math.random()*W,baseY:H*(.12+.3*Math.random()),
   ph:Math.random()*6.283,cv:(.45+Math.random()*.35)*DPR*(k%2?-1:1),
@@ -603,7 +609,7 @@ let _t=0;
 function drawSaucer(ux,uy,ph,af){
   const R=15*DPR;
   const hg=cx.createLinearGradient(ux,uy-5*DPR,ux,uy+5*DPR);
-  hg.addColorStop(0,`rgba(232,230,225,${.85*af})`);hg.addColorStop(1,`rgba(120,118,112,${.85*af})`);
+  hg.addColorStop(0,`rgba(${INK},${.85*af})`);hg.addColorStop(1,`rgba(120,118,112,${.85*af})`);
   cx.beginPath();cx.ellipse(ux,uy,R,5*DPR,0,0,6.283);cx.fillStyle=hg;cx.fill();
   cx.beginPath();cx.ellipse(ux,uy-3.5*DPR,6.5*DPR,4.5*DPR,0,Math.PI,0);
   cx.fillStyle=`rgba(137,170,204,${.45*af})`;cx.fill();
@@ -614,6 +620,7 @@ function drawSaucer(ux,uy,ph,af){
 }
 function frame(t){
   _t=t;
+  INK=document.body.classList.contains('light')?'45,42,38':'232,230,225';
   cx.clearRect(0,0,W,H);
   // hero intensity: extras fade out as you scroll past the first viewport
   const f=Math.max(0,1-scrollY/(innerHeight*.9));
@@ -633,7 +640,7 @@ function frame(t){
       const ax=a.x+mx*a.z*38*DPR,ay=a.y+my*a.z*24*DPR,bx=b.x+mx*b.z*38*DPR,by=b.y+my*b.z*24*DPR;
       const pulse=.5+.5*Math.sin(t*.0006+i);
       cx.beginPath();cx.moveTo(ax,ay);cx.lineTo(bx,by);
-      cx.strokeStyle=`rgba(232,230,225,${.085*w*f*pulse})`;cx.lineWidth=DPR*.55;cx.stroke();}
+      cx.strokeStyle=`rgba(${INK},${.085*w*f*pulse})`;cx.lineWidth=DPR*.55;cx.stroke();}
   }
   // stars (parallax + twinkle)
   const MD=170*DPR;
@@ -648,12 +655,12 @@ function frame(t){
         s.x=cx0+(Math.random()-.5)*W*.25;s.y=cy0+(Math.random()-.5)*H*.25;}
       const len=(10+s.z*34)*DPR;
       cx.beginPath();cx.moveTo(px,py);cx.lineTo(px-dx/d*len,py-dy/d*len);
-      cx.strokeStyle=s.o?`rgba(255,92,31,${.25+.4*s.z})`:`rgba(232,230,225,${.15+.35*s.z})`;
+      cx.strokeStyle=s.o?`rgba(255,92,31,${.25+.4*s.z})`:`rgba(${INK},${.15+.35*s.z})`;
       cx.lineWidth=DPR*(.5+s.z*.9);cx.stroke();
       continue;
     }
     cx.beginPath();cx.arc(px,py,s.r*(s.o?1.5:1),0,6.283);
-    cx.fillStyle=s.o?`rgba(255,92,31,${a})`:`rgba(232,230,225,${a})`;cx.fill();
+    cx.fillStyle=s.o?`rgba(255,92,31,${a})`:`rgba(${INK},${a})`;cx.fill();
     if(s.o&&s.z>.7){cx.strokeStyle=`rgba(255,92,31,${a*.4})`;cx.lineWidth=DPR*.5;
       cx.beginPath();cx.moveTo(px-6*DPR,py);cx.lineTo(px+6*DPR,py);cx.moveTo(px,py-6*DPR);cx.lineTo(px,py+6*DPR);cx.stroke();}
     const md=Math.hypot(px-mouse.x,py-mouse.y);
@@ -665,7 +672,7 @@ function frame(t){
   for(const o of orbits){
     cx.beginPath();cx.setLineDash([4*DPR,8*DPR]);
     cx.ellipse(o.ox,o.oy,o.a,o.b,o.rot,0,6.283);
-    cx.strokeStyle='rgba(232,230,225,.07)';cx.lineWidth=DPR*.7;cx.stroke();cx.setLineDash([]);
+    cx.strokeStyle=`rgba(${INK},.07)`;cx.lineWidth=DPR*.7;cx.stroke();cx.setLineDash([]);
     // trail
     const p=orbPos(o,t);
     for(let k=1;k<=14;k++){const q=orbPos({...o,ph:o.ph-k*.022},t);
@@ -678,8 +685,8 @@ function frame(t){
     cx.beginPath();cx.arc(p.x,p.y,o.r*DPR,0,6.283);cx.fillStyle='#ffb38a';cx.fill();
   }
   // center body
-  cx.beginPath();cx.arc(orbits[0].ox,orbits[0].oy,3.2*DPR,0,6.283);cx.fillStyle='rgba(232,230,225,.85)';cx.fill();
-  cx.beginPath();cx.arc(orbits[0].ox,orbits[0].oy,8*DPR,0,6.283);cx.strokeStyle='rgba(232,230,225,.15)';cx.lineWidth=DPR*.7;cx.stroke();
+  cx.beginPath();cx.arc(orbits[0].ox,orbits[0].oy,3.2*DPR,0,6.283);cx.fillStyle=`rgba(${INK},.85)`;cx.fill();
+  cx.beginPath();cx.arc(orbits[0].ox,orbits[0].oy,8*DPR,0,6.283);cx.strokeStyle=`rgba(${INK},.15)`;cx.lineWidth=DPR*.7;cx.stroke();
   // instrument ring + degree ticks (hero only)
   if(f>.02){
     const R=46*DPR,ox=orbits[0].ox,oy=orbits[0].oy,rot=t*.0003;
@@ -689,7 +696,7 @@ function frame(t){
       const l=(k%6===0?7:3.5)*DPR;
       cx.beginPath();cx.moveTo(ox+Math.cos(an)*(R+4*DPR),oy+Math.sin(an)*(R+4*DPR));
       cx.lineTo(ox+Math.cos(an)*(R+4*DPR+l),oy+Math.sin(an)*(R+4*DPR+l));
-      cx.strokeStyle=`rgba(232,230,225,${.22*f})`;cx.lineWidth=DPR*.6;cx.stroke();}
+      cx.strokeStyle=`rgba(${INK},${.22*f})`;cx.lineWidth=DPR*.6;cx.stroke();}
   }
   cx.restore();
   // satellites (drifting craft with blinking beacons)
@@ -703,11 +710,11 @@ function frame(t){
     cx.beginPath();cx.setLineDash([1.5*DPR,7*DPR]);
     cx.moveTo(s.x-Math.cos(ang)*70*DPR,s.y-Math.sin(ang)*70*DPR);
     cx.lineTo(s.x+Math.cos(ang)*46*DPR,s.y+Math.sin(ang)*46*DPR);
-    cx.strokeStyle=`rgba(232,230,225,${.13*sf})`;cx.lineWidth=DPR*.6;cx.stroke();cx.setLineDash([]);
+    cx.strokeStyle=`rgba(${INK},${.13*sf})`;cx.lineWidth=DPR*.6;cx.stroke();cx.setLineDash([]);
     // craft (small triangle)
     cx.save();cx.translate(s.x,s.y);cx.rotate(ang);
     cx.beginPath();cx.moveTo(5.5*DPR,0);cx.lineTo(-4*DPR,3.2*DPR);cx.lineTo(-4*DPR,-3.2*DPR);cx.closePath();
-    cx.fillStyle=`rgba(232,230,225,${.5*sf})`;cx.fill();cx.restore();
+    cx.fillStyle=`rgba(${INK},${.5*sf})`;cx.fill();cx.restore();
     // blinking beacon
     const bl=Math.max(0,Math.sin(t*.004+s.bl));
     cx.beginPath();cx.arc(s.x,s.y,2.2*DPR,0,6.283);
@@ -781,7 +788,7 @@ function frame(t){
           const sy=u.y+bh*(1-lift)-4*DPR, rot2=t*.008;
           cx.save();cx.translate(u.x+Math.sin(t*.012)*4*DPR*(1-lift),sy);cx.rotate(rot2);
           cx.beginPath();cx.moveTo(6*DPR,0);cx.lineTo(-4.5*DPR,3.6*DPR);cx.lineTo(-4.5*DPR,-3.6*DPR);cx.closePath();
-          cx.fillStyle=`rgba(232,230,225,${.8*f*(1-lift*.6)})`;cx.fill();cx.restore();
+          cx.fillStyle=`rgba(${INK},${.8*f*(1-lift*.6)})`;cx.fill();cx.restore();
         }
       }
       drawSaucer(u.x,u.y,u.ph,f);
@@ -1002,6 +1009,16 @@ addEventListener('keydown',e=>{
     document.body.classList.remove('konami-roll');void document.body.offsetWidth;
     document.body.classList.add('konami-roll');
     spawnRain();window.addScore(2500,'KONAMI!');sWhoosh();}});
+
+// ----- light / dark theme -----
+window.toggleTheme=function(){
+  const light=!document.body.classList.contains('light');
+  document.body.classList.toggle('light',light);
+  try{localStorage.setItem('ks-theme',light?'light':'dark');}catch(e){}
+  document.getElementById('themeBtn').textContent=light?'☾ Dark':'☀ Light';};
+try{if(localStorage.getItem('ks-theme')==='light'){
+  document.body.classList.add('light');
+  document.getElementById('themeBtn').textContent='☾ Dark';}}catch(e){}
 
 // ----- idle gag: cursor abduction after 20s -----
 let idleT=null;
