@@ -27,3 +27,7 @@ versions/               — design alternates (v1 tactical, v2 editorial)
 ## Deploying
 
 The Vercel project (`keeganselby`, Selby Studio team) serves production at keeganselby.com. Deploy by pushing to this repo (if Git integration is connected) or via `vercel deploy --prod` from the repo root.
+
+## Earth imagery
+
+The hero globe is rendered in WebGL from NASA imagery (public domain): Blue Marble for the day side, Black Marble city lights for the night side, plus a cloud layer and an ocean mask, downsized into `earth/`. Sources: NASA Visible Earth, via the example assets of [three-globe](https://github.com/vasturiano/three-globe) and [webgl-earth](https://github.com/turban/webgl-earth).
