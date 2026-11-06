@@ -1,6 +1,6 @@
 # keeganselby.com
 
-Personal site for Keegan Selby — Co-Founder & GP at [Fourth Revolution Capital](https://www.fourthrevolution.capital), Contributing GP at Atoms & Bits Capital, venture builder at Selby Studio ([Overwrite](https://overwrite.pro), [Imprint](https://imprint-intuition.vercel.app), [Encore](https://encoreplugin.com), [PupMate](https://www.pupmate.uk), [Everbound](https://everbound.us)).
+Personal site for Keegan Selby — Co-Founder & GP at [Fourth Revolution Capital](https://www.fourthrevolution.capital), Partner at Atoms & Bits Capital, venture builder at Selby Studio ([Overwrite](https://overwrite.pro), [Imprint](https://imprint-intuition.vercel.app), [Encore](https://encoreplugin.com), [PupMate](https://www.pupmate.uk), [Everbound](https://everbound.us)).
 
 **Live:** [keeganselby.com](https://www.keeganselby.com)
 
