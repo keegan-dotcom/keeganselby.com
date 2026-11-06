@@ -30,7 +30,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%2780%27 font-size=%2780%27>🛸</text></svg>">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Keegan Selby","url":"https://keeganselby.com","image":"https://keeganselby.com/keegan.jpg",
+{"@context":"https://schema.org","@type":"Person","name":"Keegan Selby","url":"https://keeganselby.com",
 "jobTitle":"Co-Founder & General Partner","worksFor":{"@type":"Organization","name":"Fourth Revolution Capital","url":"https://www.fourthrevolution.capital"},
 "alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Southern California"}],
 "address":{"@type":"PostalAddress","addressLocality":"Los Angeles","addressRegion":"CA","addressCountry":"US"},
@@ -98,19 +98,6 @@ h1.name .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-te
 .scroll-hint .bar::after{content:"";position:absolute;top:-50%;left:0;width:100%;height:50%;background:var(--acc);animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{to{top:110%}}
 .hero-coords{position:absolute;bottom:28px;right:7vw;z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--faint)}
-
-/* ---------- portrait ---------- */
-.portrait{position:absolute;z-index:2;right:7vw;top:50%;transform:translateY(-46%);width:clamp(230px,21vw,310px);margin:0;padding:10px;border:1px solid var(--line);background:var(--panel)}
-.portrait::before,.portrait::after{content:"";position:absolute;width:16px;height:16px;border-color:var(--acc);border-style:solid;pointer-events:none}
-.portrait::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
-.portrait::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
-.portrait img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;filter:grayscale(35%) contrast(1.04);transition:filter .5s}
-.portrait:hover img{filter:none}
-.portrait figcaption{display:flex;justify-content:space-between;gap:10px;padding-top:10px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.portrait figcaption b{color:var(--acc);font-weight:500}
-@media(min-width:1101px){.hero-inner{max-width:min(1100px,calc(100% - clamp(230px,21vw,310px) - 5vw))}}
-@media(max-width:1100px){.portrait{position:relative;right:auto;top:auto;transform:none;width:150px;padding:6px;margin-bottom:30px;order:-1}.portrait figcaption{display:none}}
-body.boring .portrait img{filter:grayscale(100%)}
 
 /* ---------- ticker ---------- */
 .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;background:rgba(14,14,14,.7);position:relative;z-index:1}
@@ -376,7 +363,6 @@ footer .a{color:var(--acc)}
       <a class="btn" href="#contact">Get in touch</a>
     </div>
   </div>
-  <figure class="portrait"><img src="/keegan.jpg" alt="Keegan Selby" width="640" height="640"><figcaption><span><b>●</b> KS—001</span><span>Los Angeles</span></figcaption></figure>
   <div class="scroll-hint"><div class="bar"></div>Scroll</div>
   <div class="hero-coords">LOS ANGELES, CA · 34.05°N / 118.24°W</div>
 </section>
