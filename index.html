@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keegan Selby — Investor · Builder · Engineer</title>
-<meta name="description" content="Keegan Selby is Co-Founder & GP of Fourth Revolution Capital, investing at the convergence of blockchain, AI, and robotics — ex Northrop Grumman (F-35, JWST) and Carrington, building AI-native products at Selby Studio.">
+<meta name="description" content="Keegan Selby is Co-Founder & GP of Fourth Revolution Capital, investing at the convergence of blockchain, AI, and robotics, and a Contributing GP on frontier-tech SPVs at Atoms & Bits Capital — ex Northrop Grumman (F-35, JWST) and Carrington, building Overwrite, Imprint, and other AI-native products at Selby Studio.">
 <meta name="author" content="Keegan Selby">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0a0a">
@@ -36,7 +36,7 @@
 "address":{"@type":"PostalAddress","addressLocality":"Los Angeles","addressRegion":"CA","addressCountry":"US"},
 "email":"mailto:keegan@selby.studio",
 "sameAs":["https://x.com/keegan_selby","https://medium.com/@keeganrayselby","https://www.fourthrevolution.capital"],
-"knowsAbout":["Venture Capital","Digital Assets","Artificial Intelligence","Robotics","Aerospace Engineering","Additive Manufacturing"]}
+"knowsAbout":["Venture Capital","Special Purpose Vehicles","Digital Assets","Crypto Options","AI Agents","Onchain Identity","Artificial Intelligence","Robotics","Aerospace Engineering","Additive Manufacturing"]}
 </script>
 <style>
 :root{
@@ -172,6 +172,15 @@ section{padding:110px 7vw;position:relative}
 .proj .go{margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt);display:inline-flex;align-items:center;gap:10px}
 .proj .go::after{content:"→";color:var(--acc);transition:transform .3s}
 .proj:hover .go::after{transform:translateX(6px)}
+.proj.wide{grid-column:1/-1;display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:end;border-color:#2c2c2c}
+.proj.wide::before{transform:scaleX(1);opacity:.55}
+.proj.wide:hover::before{opacity:1}
+.proj.wide h3{font-size:clamp(34px,4vw,46px)}
+.proj.wide .tagline{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:-2px 0 16px}
+@media(max-width:820px){.proj.wide{grid-template-columns:1fr;gap:26px}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-end}
+.chips span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:6px 12px}
+.proj .ptag .new{color:var(--bg);background:var(--acc);padding:1px 7px;margin-left:8px;font-weight:600}
 
 
 /* ---------- writing ---------- */
@@ -333,10 +342,11 @@ footer .a{color:var(--acc)}
     </h1>
     <div class="hero-sub">
       <span>Co-Founder &amp; GP <span class="sep">/</span> Fourth Revolution Capital</span>
+      <span>Contributing GP <span class="sep">/</span> Atoms &amp; Bits Capital</span>
       <span>Vibe Coder <span class="sep">/</span> Selby Studio</span>
       <span>ex Northrop Grumman, Carrington</span>
     </div>
-    <p class="hero-desc">Investor-operator spanning <b>frontier-technology investing</b>, <b>institutional asset management</b>, and <b>defense manufacturing</b> — from the F-35 production line to digital-asset fund management to a family venture studio shipping AI-native products.</p>
+    <p class="hero-desc">Investor-operator spanning <b>frontier-technology investing</b>, <b>institutional asset management</b>, and <b>defense manufacturing</b> — from the F-35 production line to digital-asset fund management and frontier-tech SPVs, to a family venture studio shipping <b>AI-native products and onchain agents</b>.</p>
     <div class="hero-cta">
       <a class="btn solid" href="#frc">Explore 4RC</a>
       <a class="btn" href="#contact">Get in touch</a>
@@ -348,7 +358,7 @@ footer .a{color:var(--acc)}
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-track" id="tick">
-  <span>Investing</span><span>Artificial Intelligence</span><span>Digital Assets</span><span>Crypto &amp; DeFi</span><span>Venture</span><span>Aerospace</span><span>3D Printing</span><span>Entrepreneurship</span><span>Capital Formation</span><span>Building</span>
+  <span>Investing</span><span>Artificial Intelligence</span><span>AI Agents</span><span>Digital Assets</span><span>Crypto &amp; DeFi</span><span>Onchain Options</span><span>Venture</span><span>SPVs</span><span>Aerospace &amp; Defense</span><span>Onchain Identity</span><span>3D Printing</span><span>Entrepreneurship</span><span>Capital Formation</span><span>Building</span>
 </div></div>
 
 <!-- 4RC -->
@@ -412,6 +422,13 @@ footer .a{color:var(--acc)}
       <div class="xp-tags"><span>Fund Management</span><span>Digital Assets</span><span>Venture</span><span>AI</span></div>
     </div>
     <div class="xp-item rv">
+      <div class="xp-date">2026 — Present</div>
+      <h3>Contributing General Partner</h3>
+      <div class="xp-org">Atoms &amp; Bits Capital · Single-Asset SPVs</div>
+      <p>Source and co-manage <b>single-asset SPVs into frontier aerospace, defense, and deep-tech companies</b>, bringing technical diligence and an aerospace network built on the F-35 line. Vehicles are hosted by Atoms &amp; Bits and run alongside standing co-GPs <b>Bart Meyer</b> (Primal Capital) and <b>James Stewart</b> (Level One Fund).</p>
+      <div class="xp-tags"><span>SPVs</span><span>Aerospace</span><span>Defense Tech</span><span>Deep Tech</span></div>
+    </div>
+    <div class="xp-item rv">
       <div class="xp-date">Founder</div>
       <h3>The Jet Week</h3>
       <div class="xp-org">An Adventure Capital Company</div>
@@ -446,8 +463,30 @@ footer .a{color:var(--acc)}
 <!-- SELBY STUDIO -->
 <section id="studio">
   <div class="sec-head rv"><span class="num">03</span><h2>Selby Studio</h2><span class="lbl">FAMILY VENTURE STUDIO</span></div>
-  <p class="studio-intro rv">A family venture studio building and shipping <b>AI-native consumer products</b> — designed, engineered, and launched in-house. Software with soul, built fast.</p>
+  <p class="studio-intro rv">A family venture studio building and shipping <b>AI-native products, onchain agents, and tools for Claude</b> — designed, engineered, and launched in-house. Software with soul, built fast.</p>
   <div class="proj-grid">
+    <a class="proj wide rv" href="https://overwrite.pro" target="_blank" rel="noopener">
+      <div>
+        <div class="ptag"><span>Trading Agent · Live<span class="new">NEW</span></span><span class="url">overwrite.pro</span></div>
+        <h3>Overwrite</h3>
+        <div class="tagline">Intent in. Trades out.</div>
+        <p>An intent-based trading agent. Tell it in plain English what you want your money to do, and Overwrite turns that into a plan — covered calls, the wheel, collars, put spreads, delta-neutral carry — then runs it around the clock in your own account across spot, perps, and options. Live on Base and Derive, and it also ships as a Claude plugin and MCP server, so you can quote and dry-run strategies straight from a chat.</p>
+        <span class="go">Launch App</span>
+      </div>
+      <div class="chips"><span>Base</span><span>Derive</span><span>Options</span><span>Perps</span><span>Spot</span><span>Claude Plugin</span><span>MCP</span></div>
+    </a>
+    <a class="proj rv" href="https://imprint-intuition.vercel.app" target="_blank" rel="noopener">
+      <div class="ptag"><span>Onchain Social · Live<span class="new">NEW</span></span><span class="url">built on Intuition</span></div>
+      <h3>Imprint</h3>
+      <p>Own your taste, find your people. Imprint takes the playlists, diaries, and shelves you already keep — Spotify, Apple Music, YouTube, SoundCloud, Letterboxd, Goodreads, IMDb — and presses them onto the Intuition knowledge graph as likes you own, in three transactions at most. Then it finds your taste twins.</p>
+      <span class="go">Get Imprinted</span>
+    </a>
+    <a class="proj rv" href="https://encoreplugin.com" target="_blank" rel="noopener">
+      <div class="ptag"><span>Claude Plugin · Live</span><span class="url">encoreplugin.com</span></div>
+      <h3>Encore</h3>
+      <p>The end-of-week surprise builder for Claude — it spends your unused weekly usage on one finished deliverable the night before your cap resets, then takes a bow. Also plays ChatGPT, Gemini &amp; Perplexity.</p>
+      <span class="go">Visit Site</span>
+    </a>
     <a class="proj rv" href="https://www.pupmate.uk" target="_blank" rel="noopener">
       <div class="ptag"><span>Marketplace · Live</span><span class="url">pupmate.uk</span></div>
       <h3>PupMate</h3>
