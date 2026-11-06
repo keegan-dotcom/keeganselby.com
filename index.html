@@ -154,6 +154,13 @@ section{padding:110px 7vw;position:relative}
 .xp-item p{color:var(--dim);line-height:1.75;font-weight:300;max-width:760px}
 .xp-item p b{color:var(--txt);font-weight:500}
 .xp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.xp-port{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}
+.xp-port .lab{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.xp-port a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--txt);border:1px solid var(--acc);background:var(--acc-dim);padding:8px 14px;transition:background .25s,color .25s}
+.xp-port a small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-left:8px;transition:color .25s}
+.xp-port a::after{content:" ↗";color:var(--acc);transition:color .25s}
+.xp-port a:hover{background:var(--acc);color:#000}
+.xp-port a:hover small,.xp-port a:hover::after{color:#000}
 .xp-tags span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:5px 12px}
 
 /* ---------- studio ---------- */
@@ -426,6 +433,7 @@ footer .a{color:var(--acc)}
       <h3>Partner</h3>
       <div class="xp-org">Atoms &amp; Bits Capital · Single-Asset SPVs</div>
       <p>Source and co-manage <b>single-asset SPVs into frontier aerospace, defense, and deep-tech companies</b>, bringing technical diligence and an aerospace network built on the F-35 line. Vehicles are hosted by Atoms &amp; Bits and run alongside standing co-GPs <b>Bart Meyer</b> (Primal Capital) and <b>James Stewart</b> (Level One Fund).</p>
+      <div class="xp-port"><span class="lab">Selected SPV Portfolio</span><a href="https://www.stellios.io" target="_blank" rel="noopener">Stellios<small>High-power microwave · Fusion</small></a><a href="https://zoo.dev" target="_blank" rel="noopener">Zoo<small>AI-native CAD</small></a></div>
       <div class="xp-tags"><span>SPVs</span><span>Aerospace</span><span>Defense Tech</span><span>Deep Tech</span></div>
     </div>
     <div class="xp-item rv">
