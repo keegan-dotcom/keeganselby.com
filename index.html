@@ -155,6 +155,16 @@ section{padding:110px 7vw;position:relative}
 .xp-item p{color:var(--dim);line-height:1.75;font-weight:300;max-width:760px}
 .xp-item p b{color:var(--txt);font-weight:500}
 .xp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.xp-org a{color:var(--txt);border-bottom:1px solid var(--acc);transition:color .2s}
+.xp-org a:hover{color:var(--acc)}
+.ab-tx{margin-top:24px;max-width:760px;border-top:1px solid var(--line)}
+.ab-tx .lab{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);padding:12px 0;border-bottom:1px solid var(--line)}
+.ab-tx a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ab-tx .co{font-size:clamp(19px,2.3vw,26px);font-weight:500;color:var(--txt);letter-spacing:-.01em;transition:color .25s}
+.ab-tx .co::after{content:" ↗";font-size:.6em;color:var(--faint);transition:color .25s}
+.ab-tx .led{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);padding:2px 7px;margin-left:12px;vertical-align:middle}
+.ab-tx .meta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;line-height:1.8}
+.ab-tx a:hover .co,.ab-tx a:hover .co::after{color:var(--acc)}
 .xp-tags span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:5px 12px}
 
 /* ---------- studio ---------- */
@@ -427,8 +437,15 @@ footer .a{color:var(--acc)}
     <div class="xp-item rv">
       <div class="xp-date">2026 — Present</div>
       <h3>Partner</h3>
-      <div class="xp-org">Atoms &amp; Bits Capital · Single-Asset SPVs</div>
+      <div class="xp-org"><a href="https://www.atomsandbits.xyz/" target="_blank" rel="noopener">Atoms &amp; Bits Capital ↗</a> · Single-Asset SPVs</div>
       <p>Source and co-manage <b>single-asset SPVs into frontier aerospace, defense, and deep-tech companies</b>, bringing technical diligence and an aerospace network built on the F-35 line. Vehicles are hosted by Atoms &amp; Bits and run alongside standing co-GPs <b>Bart Meyer</b> (Primal Capital) and <b>James Stewart</b> (Level One Fund).</p>
+      <div class="ab-tx">
+        <span class="lab">Recent Transactions</span>
+        <a href="https://www.prolific-machines.com/" target="_blank" rel="noopener"><span class="co">Prolific Machines<span class="led">Led</span></span><span class="meta">Deniz Kent<br>Biomanufacturing</span></a>
+        <a href="https://machindustries.com/" target="_blank" rel="noopener"><span class="co">Mach Industries</span><span class="meta">Ethan Thornton<br>Defense</span></a>
+        <a href="https://standardbots.com/" target="_blank" rel="noopener"><span class="co">Standard Bots</span><span class="meta">Evan Beard<br>Robotics</span></a>
+        <a href="https://science.xyz/" target="_blank" rel="noopener"><span class="co">Science Corporation</span><span class="meta">Max Hodak<br>BCI</span></a>
+      </div>
       <div class="xp-tags"><span>SPVs</span><span>Aerospace</span><span>Defense Tech</span><span>Deep Tech</span></div>
     </div>
     <div class="xp-item rv">
