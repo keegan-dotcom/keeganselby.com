@@ -637,7 +637,7 @@ function resize(){
   for(let i=0;i<stars.length;i++)for(let j=i+1;j<stars.length;j++){
     const d=Math.hypot(stars[i].x-stars[j].x,stars[i].y-stars[j].y);
     if(d<LD&&Math.random()<.55)links.push([i,j,1-d/LD]);}
-  const ox=W*.84,oy=H*.44,rot=-.42;
+  const iw=innerWidth,ox=W*(iw<820?.9:iw<1300?.85:.8),oy=H*(iw<820?.12:iw<1300?.3:.44),rot=-.42;
   orbits=[
     {ox,oy,a:W*.115,b:W*.046,rot,sp:.00040,ph:0.4,r:2.4},
     {ox,oy,a:W*.185,b:W*.075,rot,sp:.00026,ph:2.3,r:2.0},
@@ -664,6 +664,105 @@ function spawnComet(){
 function orbPos(o,t){const th=o.ph+t*o.sp;
   const ex=Math.cos(th)*o.a, ey=Math.sin(th)*o.b;
   return {x:o.ox+ex*Math.cos(o.rot)-ey*Math.sin(o.rot), y:o.oy+ex*Math.sin(o.rot)+ey*Math.cos(o.rot), th};}
+// ----- earth: dot-matrix globe at the orbital centre -----
+// land mask: 2° grid, 90 rows (lat 89..-89) x 180 cols (lon -179..179), packed bits
+const EMASK=(()=>{const b=atob('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHwAf/AAAAAAAAAAAAAAAAAAAAAAAAf/////+AAAAABAABAAAAAAAAAAAAAMf+f///wAA+AAAAAA8AAAAAAAAAAAwA74f///4AAIAAAAAAPAAAAAAAAAAAPipwAf//wAAAAADgAP/4AHAAAAAAAD8338AP//gAAAAAEAD///eDAAAABgAAfw3/gL/+gAAAwAMDf///+/9gAAP////5djwH/+AAAH/gA//////////8P//////h8H/gAAAf/6///////////M//////9l4D8A+AA+/P///////////AP/////wE8B4AAAD9/////////////Af/////gHgA4AAAP5///////////PwAHgH///gH0AAAAAH4/////////+AMAABQD///4D+AAAAGCx/////////8A8AAAAB////n/gAAAOCj/////////4A4AAAAAf///n/wAAAbH///////////AwAAAAAP/////wAAADf//////////9AAAAAAAH////8YAAAB///////////9AAAAAAAD////8IAAAB///////////4AAAAAAAD////+AAAAB/f5f///////wAAAAAAAD////gAAAAPxvwP///////jgAAAAAAD///+AAAAAPib3///////+CAAAAAAAD///+AAAAAfCLf//////+MCAAAAAAAB///8AAAAAOGRP///////mGAAAAAAAA///8AAAAAH+AA///////E8AAAAAAAAf//wAAAAAP/AB///////hAAAAAAAAAP//gAAAAAf/7////////gAAAAAAAAAH/gwAAAAAf////f/////gAAAAAAAAAF+AQAAAAB///+/n/////AAAAAAAAAAC+AAAAAAD/////0H///+AAAAAAAAAAAeAQAAAAD////f/D///8gAAAAAAAAAAeGEAAAAD////v/B/z/QAAAAAAAAAAAPMBgAAAD////v+A/B+gAAAAAAAAAAAD8AAAAAD////34AeB/AgAAAAAAAAAAAPAAAAAH////3wAcAfggAAAAAAAAAAADAAAAAD////+AAcAfgQAAAAAAAAAAABBwAAAD////9wAMATAIAAAAAAAAAAAA7/AAAB/////gAKAQAIAAAAAAAAAAAAH/gAAA/////gACAIAIAAAAAAAAAAAAH/8AAAaH///AAAAsGAAAAAAAAAAAAAH/+AAAAB//+AAAA0OAAAAAAAAAAAAAP/+AAAAB//8AAAAc+AAAAAAAAAAAAAP//gAAAD//4AAAAMeggAAAAAAAAAAAP//8AAAB//wAAAAOdi+AAAAAAAAAAAf///AAAA//wAAAACAAPkAAAAAAAAAAP///gAAA//wAAAAB4AHwAAAAAAAAAAH///AAAAf/wAAAAAAIDQAAAAAAAAAAH///AAAAf/wAAAAAAAAAAAAAAAAAAAD//+AAAA//wgAAAAABxAAAAAAAAAAAD//+AAAA//xgAAAAAPxgAAAAAAAAAAA//8AAAA//zgAAAAAf/gAAAAAAAAAAAf/8AAAA//DgAAAAAf/gAAAAAAAAAAAf/8AAAAf/DAAAAAD//4AAAAAAAAAAAf/4AAAAf/DAAAAAH//4AAAAAAAAAAAf/AAAAAf+DAAAAAH//8AAAAAAAAAAAf/AAAAAP8AAAAAAH//+AAAAAAAAAAA/+AAAAAP8AAAAAAH//+AAAAAAAAAAA/+AAAAAH4AAAAAAD//+AAAAAAAAAAA/8AAAAAHwAAAAAADwf8AAAAAAAAAAA/wAAAAAAAAAAAAACAH4AAAAAAAAAAB/wAAAAAAAAAAAAAAAD4AEAAAAAAAAB/AAAAAAAAAAAAAAAAAAAGAAAAAAAAB+AAAAAAAAAAAAAAAAAwAIAAAAAAAAB8AAAAAAAAAAAAAAAAAQAYAAAAAAAAB4AAAAAAAAAAAAAAAAAAAwAAAAAAAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAcAAf/8f/AAAAAAAAAAAAsAAAAAAACP/+H//////AAAAAAAAAAA+AAAAIf////+////////AAAAAAADsJ/AAAB///////////////gAAAH/+H//+AAAP//////////////8AAAH//////AAAP///////////////8AAEf/////8gBw////////////////4AAAH//////gAD////////////////4AAB///////+f//////////////////g/z////////////////////////////////////////////////////////////////////////////////////////');const u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;})();
+function isLand(lat,lon){const r=Math.min(89,Math.max(0,Math.round((89-lat)/2)));
+  const c=((Math.round((lon+179)/2)%180)+180)%180,i=r*180+c;return (EMASK[i>>3]>>(7-(i&7)))&1;}
+const EPTS=(()=>{const N=7200,out=[],ga=Math.PI*(3-Math.sqrt(5));
+  for(let i=0;i<N;i++){const y=1-2*(i+.5)/N,rr=Math.sqrt(1-y*y),ph=i*ga;
+    const x=Math.cos(ph)*rr,z=Math.sin(ph)*rr;
+    const lat=Math.asin(y)*57.2958,lon=Math.atan2(z,x)*57.2958;
+    const land=isLand(lat,lon);
+    if(land||i%2===0)out.push({x,y,z,land,city:land&&Math.random()<.28});}
+  return out;})();
+const TILT=23.4*Math.PI/180,LX=-.56,LY=.42,LZ=.71;
+let eSpin=0,eSpd=1;
+function earthR(){const iw=innerWidth;return iw<820?W*.2:iw<1300?Math.min(W*.085,H*.2):Math.min(W*.1,H*.28);}
+const SPARKS=[[-1.62,-.95,9,.0],[1.48,-1.18,7,1.7],[1.88,.62,10,3.1],[-1.38,1.22,6,4.4],[.42,-1.72,8,2.2],[-1.95,.18,5,5.3],[1.05,1.55,6,.9]];
+function sparkle(x,y,s,a){cx.fillStyle=`rgba(255,${200},${170},${a})`;
+  cx.beginPath();cx.moveTo(x,y-s);cx.lineTo(x+s*.16,y-s*.16);cx.lineTo(x+s,y);cx.lineTo(x+s*.16,y+s*.16);
+  cx.lineTo(x,y+s);cx.lineTo(x-s*.16,y+s*.16);cx.lineTo(x-s,y);cx.lineTo(x-s*.16,y-s*.16);cx.closePath();cx.fill();
+  const g=cx.createRadialGradient(x,y,0,x,y,s*1.4);g.addColorStop(0,`rgba(255,140,80,${a*.5})`);g.addColorStop(1,'rgba(255,140,80,0)');
+  cx.fillStyle=g;cx.beginPath();cx.arc(x,y,s*1.4,0,6.283);cx.fill();}
+// planetary ring: banded, tilted with the orbits; drawn in two halves around the globe
+function drawRing(ex,ey,front,alpha){
+  const R=earthR(),rot=-.42,bands=[[1.30,.05],[1.36,.16],[1.40,.07],[1.46,.22],[1.52,.10],[1.58,.05],[1.63,.14]];
+  cx.save();cx.globalAlpha=alpha;
+  for(let k=0;k<bands.length;k++){const [r,a]=bands[k];
+    cx.beginPath();cx.ellipse(ex,ey,R*r,R*r*.27,rot,front?0:Math.PI,front?Math.PI:6.283);
+    cx.strokeStyle=k===3?`rgba(255,92,31,${a*(front?1.6:1)})`:`rgba(${INK},${a*(front?1.3:.8)})`;
+    cx.lineWidth=DPR*(k===3?1.6:1.1);cx.stroke();}
+  cx.restore();}
+function drawEarth(t,ex,ey,alpha){
+  const R=earthR(),light=document.body.classList.contains('light');
+  eSpd+=((Math.hypot(mouse.x-ex,mouse.y-ey)<R*1.1?7:1)-eSpd)*.04;
+  eSpin+=.00011*16*eSpd;
+  const cs=Math.cos(eSpin),sn=Math.sin(eSpin),ct=Math.cos(TILT),st=Math.sin(TILT);
+  cx.save();cx.globalAlpha=alpha;
+  // sparkles
+  for(const [sx,sy,ss,sp] of SPARKS){const a=Math.max(0,Math.sin(t*.0016+sp))**3;
+    if(a>.02)sparkle(ex+sx*R,ey+sy*R,ss*DPR*(.6+.4*a),a*.9);}
+  // corona: flickering flame rim, strongest on the back-lit (lower-right) side
+  const back=Math.atan2(LY,-LX);
+  cx.globalCompositeOperation=light?'source-over':'lighter';
+  for(const [amp,ph,col] of [[.13,0,'255,92,31'],[.08,2.1,'255,150,70']]){
+    cx.beginPath();
+    for(let k=0;k<=160;k++){const an=k/160*6.283;
+      const n=(Math.sin(an*6+t*.0012+ph)+.6*Math.sin(an*11-t*.0019+ph*2)+.35*Math.sin(an*17+t*.0027))/1.95;
+      const w=Math.pow(Math.max(0,Math.cos(an-back)),1.4);
+      const r=R*(1.01+amp*w*(.55+.45*n));
+      const px=ex+Math.cos(an)*r,py=ey+Math.sin(an)*r;k?cx.lineTo(px,py):cx.moveTo(px,py);}
+    cx.closePath();
+    const g=cx.createRadialGradient(ex,ey,R*.96,ex,ey,R*(1.02+amp));
+    g.addColorStop(0,`rgba(${col},${light?.35:.55})`);g.addColorStop(1,`rgba(${col},0)`);
+    cx.fillStyle=g;cx.fill();}
+  // cool atmosphere on the sunlit side
+  let g=cx.createRadialGradient(ex-R*.25,ey-R*.2,R*.9,ex,ey,R*1.3);
+  g.addColorStop(0,light?'rgba(90,130,200,.18)':'rgba(110,150,235,.2)');g.addColorStop(1,'rgba(110,150,235,0)');
+  cx.fillStyle=g;cx.beginPath();cx.arc(ex,ey,R*1.3,0,6.283);cx.fill();
+  cx.globalCompositeOperation='source-over';
+  // body, lit from upper left
+  g=cx.createRadialGradient(ex-R*.38,ey-R*.34,R*.1,ex,ey,R);
+  if(light){g.addColorStop(0,'rgba(250,248,243,1)');g.addColorStop(1,'rgba(214,209,199,1)');}
+  else{g.addColorStop(0,'rgba(32,40,58,1)');g.addColorStop(.6,'rgba(14,17,25,1)');g.addColorStop(1,'rgba(7,8,11,1)');}
+  cx.fillStyle=g;cx.beginPath();cx.arc(ex,ey,R,0,6.283);cx.fill();
+  // graticule (front half only)
+  cx.lineWidth=DPR*.6;cx.strokeStyle=`rgba(${INK},.06)`;
+  const P=(lat,lon)=>{const la=lat/57.2958,lo=lon/57.2958;let x=Math.cos(la)*Math.cos(lo),y=Math.sin(la),z=Math.cos(la)*Math.sin(lo);
+    const x1=x*cs+z*sn,z1=-x*sn+z*cs;return [x1*ct-y*st,x1*st+y*ct,z1];};
+  const line=(fn,n)=>{cx.beginPath();let on=false;for(let k=0;k<=n;k++){const [x,y,z]=fn(k/n);
+    if(z>0){const px=ex+x*R,py=ey-y*R;on?cx.lineTo(px,py):cx.moveTo(px,py);on=true;}else on=false;}cx.stroke();};
+  for(let lo=-180;lo<180;lo+=30)line(u=>P(-90+180*u,lo),48);
+  for(let la=-60;la<=60;la+=30)line(u=>P(la,-180+360*u),72);
+  // halftone dots: size follows sunlight; orange rim light on the back-lit limb; city lights at night
+  const oc=light?'60,90,140':'140,170,225';
+  for(const p of EPTS){
+    const x1=p.x*cs+p.z*sn,z1=-p.x*sn+p.z*cs,y1=p.y;
+    const x=x1*ct-y1*st,y=x1*st+y1*ct,z=z1;
+    if(z<=0)continue;
+    const px=ex+x*R,py=ey-y*R,lit=x*LX+y*LY+z*LZ,limb=Math.min(1,z*2.4),day=Math.max(0,lit);
+    const rim=Math.max(0,(x*.8-y*.6))*Math.pow(1-z,1.4)*2.2;
+    let s,c,a;
+    if(p.land){
+      if(lit>0){s=DPR*(1.1+1.5*Math.pow(day,.7));c=INK;a=(.3+.7*Math.pow(day,.6))*limb;}
+      else if(p.city){s=DPR*1.5;c=`255,${130+((p.x*997|0)&40)},60`;a=Math.min(1,-lit*2.4)*.9*limb;}
+      else{s=DPR*1.1;c=INK;a=.09*limb;}
+    }else{s=DPR*(.45+1.25*day);c=oc;a=(lit>0?.1+.22*day:.035)*limb;}
+    cx.fillStyle=`rgba(${c},${a})`;cx.fillRect(px-s/2,py-s/2,s,s);
+    if(rim>.12){const rs=DPR*(p.land?1.6:1.1);cx.fillStyle=`rgba(255,110,50,${Math.min(.95,rim)*(p.land?1:.55)})`;cx.fillRect(px-rs/2,py-rs/2,rs,rs);}
+  }
+  // terminator shade + crisp lit rim
+  g=cx.createLinearGradient(ex-R*LX*1.1,ey+R*LY*1.1,ex+R*LX*1.1,ey-R*LY*1.1);
+  g.addColorStop(0,light?'rgba(40,36,30,.2)':'rgba(0,0,0,.5)');g.addColorStop(.5,'rgba(0,0,0,0)');
+  cx.fillStyle=g;cx.beginPath();cx.arc(ex,ey,R,0,6.283);cx.fill();
+  const la=Math.atan2(-LY,LX);
+  cx.beginPath();cx.arc(ex,ey,R,la-1.3,la+1.3);
+  cx.strokeStyle=light?'rgba(80,120,190,.5)':'rgba(160,195,255,.6)';cx.lineWidth=DPR*1.3;cx.stroke();
+  cx.beginPath();cx.arc(ex,ey,R,back-1.1,back+1.1);
+  cx.strokeStyle='rgba(255,110,50,.65)';cx.lineWidth=DPR*1.4;cx.stroke();
+  cx.restore();
+}
 let _t=0;
 function drawSaucer(ux,uy,ph,af){
   const R=15*DPR;
@@ -726,29 +825,30 @@ function frame(t){
     if(md<MD){cx.beginPath();cx.moveTo(px,py);cx.lineTo(mouse.x,mouse.y);
       cx.strokeStyle=`rgba(255,92,31,${.22*(1-md/MD)})`;cx.lineWidth=DPR*.6;cx.stroke();}
   }
-  // orbital system
+  // orbital system: far halves, then the earth, then near halves (so orbits pass behind it)
   cx.save();
-  for(const o of orbits){
+  const orbitPass=front=>{for(const o of orbits){
     cx.beginPath();cx.setLineDash([4*DPR,8*DPR]);
-    cx.ellipse(o.ox,o.oy,o.a,o.b,o.rot,0,6.283);
-    cx.strokeStyle=`rgba(${INK},.07)`;cx.lineWidth=DPR*.7;cx.stroke();cx.setLineDash([]);
+    cx.ellipse(o.ox,o.oy,o.a,o.b,o.rot,front?0:Math.PI,front?Math.PI:6.283);
+    cx.strokeStyle=`rgba(${INK},${front?.09:.06})`;cx.lineWidth=DPR*.7;cx.stroke();cx.setLineDash([]);
     // trail
-    const p=orbPos(o,t);
-    for(let k=1;k<=14;k++){const q=orbPos({...o,ph:o.ph-k*.022},t);
+    for(let k=1;k<=14;k++){const q=orbPos({...o,ph:o.ph-k*.022},t);if((Math.sin(q.th)>0)!==front)continue;
       cx.beginPath();cx.arc(q.x,q.y,o.r*DPR*(1-k/16),0,6.283);
       cx.fillStyle=`rgba(255,92,31,${.30*(1-k/15)})`;cx.fill();}
     // body + glow
+    const p=orbPos(o,t);if((Math.sin(p.th)>0)!==front)continue;
     g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,o.r*DPR*5);
     g.addColorStop(0,'rgba(255,92,31,.5)');g.addColorStop(1,'rgba(255,92,31,0)');
     cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,o.r*DPR*5,0,6.283);cx.fill();
     cx.beginPath();cx.arc(p.x,p.y,o.r*DPR,0,6.283);cx.fillStyle='#ffb38a';cx.fill();
-  }
-  // center body
-  cx.beginPath();cx.arc(orbits[0].ox,orbits[0].oy,3.2*DPR,0,6.283);cx.fillStyle=`rgba(${INK},.85)`;cx.fill();
-  cx.beginPath();cx.arc(orbits[0].ox,orbits[0].oy,8*DPR,0,6.283);cx.strokeStyle=`rgba(${INK},.15)`;cx.lineWidth=DPR*.7;cx.stroke();
+  }};
+  const eA=innerWidth<820?.25+.6*f:(.35+.65*f),eX=orbits[0].ox,eY=orbits[0].oy;
+  orbitPass(false);drawRing(eX,eY,false,eA);
+  drawEarth(t,eX,eY,eA);
+  drawRing(eX,eY,true,eA);orbitPass(true);
   // instrument ring + degree ticks (hero only)
   if(f>.02){
-    const R=46*DPR,ox=orbits[0].ox,oy=orbits[0].oy,rot=t*.0003;
+    const R=earthR()+18*DPR,ox=orbits[0].ox,oy=orbits[0].oy,rot=t*.0003;
     cx.beginPath();cx.setLineDash([2*DPR,5*DPR]);cx.arc(ox,oy,R,rot,rot+5.2);
     cx.strokeStyle=`rgba(255,92,31,${.35*f})`;cx.lineWidth=DPR;cx.stroke();cx.setLineDash([]);
     for(let k=0;k<24;k++){const an=k*6.283/24-rot*.6;
