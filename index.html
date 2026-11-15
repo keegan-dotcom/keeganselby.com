@@ -157,14 +157,21 @@ section{padding:110px 7vw;position:relative}
 .xp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .xp-org a{color:var(--txt);border-bottom:1px solid var(--acc);transition:color .2s}
 .xp-org a:hover{color:var(--acc)}
-.ab-tx{margin-top:24px;max-width:760px;border-top:1px solid var(--line)}
-.ab-tx .lab{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);padding:12px 0;border-bottom:1px solid var(--line)}
-.ab-tx a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
-.ab-tx .co{font-size:clamp(19px,2.3vw,26px);font-weight:500;color:var(--txt);letter-spacing:-.01em;transition:color .25s}
-.ab-tx .co::after{content:" ↗";font-size:.6em;color:var(--faint);transition:color .25s}
-.ab-tx .led{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);padding:2px 7px;margin-left:12px;vertical-align:middle}
-.ab-tx .meta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;line-height:1.8}
-.ab-tx a:hover .co,.ab-tx a:hover .co::after{color:var(--acc)}
+.ab-tx{margin-top:26px;max-width:760px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ab-tx .lab{grid-column:1/-1;display:block;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);padding:12px 16px;background:var(--bg)}
+.ab-tx a{position:relative;background:var(--bg);padding:20px 16px 18px;display:flex;flex-direction:column;gap:6px;transition:background .25s}
+.ab-tx a::after{content:"↗";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:11px;transition:color .25s,transform .25s}
+.ab-tx .co{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--txt);transition:color .25s}
+.ab-tx .meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);line-height:1.6}
+.ab-tx .meta br{display:none}
+.ab-tx .meta .sep{color:var(--faint);margin:0 6px}
+.ab-tx .led{display:none}
+.ab-tx a:hover{background:var(--acc-dim)}
+.ab-tx a:hover::after{color:var(--acc);transform:translate(2px,calc(-50% - 2px))}
+.ab-tx a.feat{background:var(--acc-dim);box-shadow:inset 0 0 0 1px var(--acc)}
+.ab-tx a.feat::before{content:"LED";position:absolute;top:6px;right:8px;font-family:var(--mono);font-size:8px;letter-spacing:.18em;color:var(--acc)}
+.ab-tx a.feat::after{color:var(--acc)}
+@media(max-width:520px){.ab-tx{grid-template-columns:1fr}}
 .xp-tags span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:5px 12px}
 
 /* ---------- studio ---------- */
@@ -439,10 +446,10 @@ footer .a{color:var(--acc)}
       <p>Source and co-manage <b>single-asset SPVs into frontier aerospace, defense, and deep-tech companies</b>, bringing technical diligence and an aerospace network built on the F-35 line. Vehicles are hosted by Atoms &amp; Bits and run alongside standing co-GPs <b>Bart Meyer</b> (Primal Capital) and <b>James Stewart</b> (Level One Fund).</p>
       <div class="ab-tx">
         <span class="lab">Recent Transactions</span>
-        <a href="https://www.prolific-machines.com/" target="_blank" rel="noopener"><span class="co">Prolific Machines<span class="led">Led</span></span><span class="meta">Deniz Kent<br>Biomanufacturing</span></a>
-        <a href="https://machindustries.com/" target="_blank" rel="noopener"><span class="co">Mach Industries</span><span class="meta">Ethan Thornton<br>Defense</span></a>
-        <a href="https://standardbots.com/" target="_blank" rel="noopener"><span class="co">Standard Bots</span><span class="meta">Evan Beard<br>Robotics</span></a>
-        <a href="https://science.xyz/" target="_blank" rel="noopener"><span class="co">Science Corporation</span><span class="meta">Max Hodak<br>BCI</span></a>
+        <a class="feat" href="https://www.prolific-machines.com/" target="_blank" rel="noopener"><span class="co">Prolific Machines<span class="led">Led</span></span><span class="meta">Deniz Kent<br><span class="sep">·</span>Biomanufacturing</span></a>
+        <a href="https://machindustries.com/" target="_blank" rel="noopener"><span class="co">Mach Industries</span><span class="meta">Ethan Thornton<br><span class="sep">·</span>Defense</span></a>
+        <a href="https://standardbots.com/" target="_blank" rel="noopener"><span class="co">Standard Bots</span><span class="meta">Evan Beard<br><span class="sep">·</span>Robotics</span></a>
+        <a href="https://science.xyz/" target="_blank" rel="noopener"><span class="co">Science Corporation</span><span class="meta">Max Hodak<br><span class="sep">·</span>BCI</span></a>
       </div>
       <div class="xp-tags"><span>SPVs</span><span>Aerospace</span><span>Defense Tech</span><span>Deep Tech</span></div>
     </div>
