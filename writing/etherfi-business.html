@@ -1,0 +1,552 @@
+<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Why ether.fi Business is the most bullish thing about ETHFI | Keegan Selby</title>
+<meta name="description" content="A defibank's best customer is a company. The math on the card, the balances, the borrow and the buybacks, and where I think ETHFI goes. A research note by Keegan Selby.">
+<meta property="og:title" content="Why ether.fi Business is the most bullish thing about ETHFI">
+<meta property="og:description" content="The math on the card, the balances, the borrow and the buybacks, with an interactive 2030 valuation model. By Keegan Selby.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Onest:wght@400;500&display=swap">
+<style>
+:root{--page:#F8F6F0;--card:#FFFFFF;--text:#0E0E0D;--sec:rgba(14,14,13,.62);--lab:rgba(14,14,13,.50);--dim:rgba(14,14,13,.34);--hair:rgba(14,14,13,.10);--track:rgba(14,14,13,.07);--mute:rgba(14,14,13,.24);--accent:#5E4BE6;--v:#7A67F2;--k:#2B2925;--o:#D09A3E;--tv:#CFC6FF;--edge:transparent;--pad:clamp(22px,2.4vw,32px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#0D0D0C;--card:#191816;--text:#F3F0E8;--sec:rgba(243,240,232,.62);--lab:rgba(243,240,232,.50);--dim:rgba(243,240,232,.34);--hair:rgba(243,240,232,.10);--track:rgba(243,240,232,.07);--mute:rgba(243,240,232,.26);--accent:#A99DFF;--v:#A99DFF;--k:#E4DECF;--o:#E0B566;--edge:rgba(243,240,232,.06);color-scheme:dark}}
+:root[data-theme="dark"]{--page:#0D0D0C;--card:#191816;--text:#F3F0E8;--sec:rgba(243,240,232,.62);--lab:rgba(243,240,232,.50);--dim:rgba(243,240,232,.34);--hair:rgba(243,240,232,.10);--track:rgba(243,240,232,.07);--mute:rgba(243,240,232,.26);--accent:#A99DFF;--v:#A99DFF;--k:#E4DECF;--o:#E0B566;--edge:rgba(243,240,232,.06);color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--text);font-family:Onest,system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--page)}
+a{color:inherit}
+.w{max-width:1240px;margin:0 auto;padding-left:max(clamp(16px,4.4vw,64px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4.4vw,64px),env(safe-area-inset-right,0px))}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--page) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.top .w{display:flex;justify-content:space-between;align-items:center;gap:16px;height:56px;font-size:13.5px;color:var(--sec)}
+.top b{font-weight:500;color:var(--text)}
+.top a{text-decoration:none;margin-left:18px;color:var(--text)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:9px}
+section{padding-top:clamp(56px,9vw,120px)}
+.eb{font-size:14px;color:var(--lab);margin-bottom:14px}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:400;font-optical-sizing:auto;letter-spacing:-.04em;line-height:.98;text-wrap:balance}
+h1{font-size:clamp(44px,8.6vw,112px);max-width:14ch}
+h2{font-size:clamp(36px,5.6vw,76px);max-width:18ch}
+h1 i,h2 i{font-style:normal;color:var(--dim)}
+.lede{margin-top:22px;max-width:60ch;font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:var(--sec);text-wrap:pretty}
+.byl{margin-top:16px;max-width:76ch;font-size:13.5px;line-height:1.55;color:var(--lab)}
+.byl b{font-weight:500;color:var(--text)}
+.grid{margin-top:clamp(26px,3.6vw,44px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.c{grid-column:span 12;min-width:0;background:var(--card);border-radius:28px;padding:var(--pad);box-shadow:inset 0 0 0 1px var(--edge);display:flex;flex-direction:column}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}
+.dark{background:#121211;color:#F3F0E8;--text:#F3F0E8;--sec:rgba(243,240,232,.62);--lab:rgba(243,240,232,.5);--dim:rgba(243,240,232,.34);--hair:rgba(243,240,232,.12);--track:rgba(243,240,232,.1);--mute:rgba(243,240,232,.28);--v:#A99DFF;--k:#E4DECF;--o:#E0B566;--accent:#A99DFF}
+.lilac{background:#E4DEFA;color:#1C1737;--text:#1C1737;--sec:rgba(28,23,55,.72);--lab:rgba(28,23,55,.56);--dim:rgba(28,23,55,.38);--hair:rgba(28,23,55,.14)}
+.pr{grid-column:span 7;min-width:0;max-width:66ch;font-size:clamp(16px,1.25vw,17.5px);line-height:1.62;text-wrap:pretty}
+.pr.w8{grid-column:span 8}
+.pr p+p{margin-top:1.05em}
+.pr b{font-weight:500}
+.pr a,.nt a,.fine a{text-decoration:underline;text-decoration-color:var(--dim);text-underline-offset:3px}
+.c h3{font-family:Newsreader,Georgia,serif;font-weight:400;font-optical-sizing:auto;font-size:clamp(25px,2.3vw,31px);letter-spacing:-.025em;line-height:1.08;text-wrap:balance}
+.l{font-size:14px;color:var(--lab);margin-bottom:8px}
+.c>p{margin-top:12px;color:var(--sec);text-wrap:pretty}
+.c>p b{font-weight:500;color:var(--text)}
+.f{font-size:clamp(42px,4.6vw,64px);font-weight:400;letter-spacing:-.045em;line-height:1}
+.f i{font-style:normal;color:var(--dim)}
+.f.xl{font-size:clamp(88px,12vw,168px);letter-spacing:-.06em;line-height:.86}
+.est{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--hair);font-size:12px;color:var(--lab);vertical-align:2px}
+.nt{margin-top:auto;padding-top:20px;font-size:13px;line-height:1.5;color:var(--lab)}
+.kp{align-self:start}
+.bars{margin-top:24px;display:grid;grid-template-columns:max-content minmax(0,1fr) max-content;gap:14px 16px;align-items:center}
+.c>.bars{flex:1 1 auto;align-content:space-between}
+.bars .lab{font-size:14.5px;color:var(--sec);white-space:nowrap}
+.bars .lab.on{color:var(--text);font-weight:500}
+.trk{position:relative;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
+.trk i{position:absolute;top:0;bottom:0;left:0;min-width:6px;border-radius:7px;background:var(--mute)}
+.trk i.v{background:var(--v)}.trk i.k{background:var(--k)}.trk i.o{background:var(--o)}
+.trk i.ext{opacity:.4;border-radius:0 7px 7px 0;min-width:0}
+.bars .val{font-size:14.5px;font-weight:500;text-align:right;white-space:nowrap}
+.seg3{display:flex;gap:4px;height:18px;margin-top:18px}
+.seg3 span{border-radius:9px;min-width:6px}
+.tb{width:100%;border-collapse:collapse;margin-top:18px;font-size:15px}
+.tb td,.tb th{padding:11px 0 11px 16px;border-top:1px solid var(--hair);text-align:right;font-weight:400;white-space:nowrap}
+.tb tr:first-child th,.tb tr:first-child td{border-top:0;font-size:13px;color:var(--lab);padding-top:0}
+.tb td:first-child,.tb th:first-child{text-align:left;padding-left:0;white-space:normal}
+.tb tr.em td,.tb tr.em th{font-weight:500}
+.tb.tx td,.tb.tx th{text-align:left;white-space:normal;vertical-align:top;color:var(--sec);padding-left:0;padding-right:20px}
+.tb.tx{table-layout:fixed;min-width:720px}.tb.tx th:first-child{width:15%}.tb.tx th:nth-child(2){width:44%}.tb.tx td:first-child{color:var(--text);font-weight:500}
+.tw{overflow-x:auto}
+.ln{margin-top:18px}
+.ln .r{display:grid;grid-template-columns:minmax(0,1fr) max-content;column-gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--hair)}
+.ln .r>div{display:flex;flex-direction:column;gap:2px}.ln span{display:flex;align-items:center;gap:9px}.ln i{width:9px;height:9px;border-radius:50%;flex:none}.ln b{font-weight:500;font-size:15.5px}.ln small{font-size:13px;color:var(--lab);padding-left:18px}.ln em{font-style:normal;font-size:17px;text-align:right}
+.tl{margin-top:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(6,auto);grid-auto-flow:column;column-gap:44px}
+.tl>div{display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--hair);font-size:15px}
+.tl>div:nth-child(6n+1){border-top:0}
+.tl time{font-size:13px;color:var(--lab);white-space:nowrap}
+.steps{margin-top:20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 28px}
+.steps.n3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.steps>div{display:flex;flex-direction:column;gap:12px;padding-top:16px;border-top:1px solid var(--hair);font-size:15px;color:var(--sec)}
+.chip{flex:none;width:30px;height:30px;border-radius:50%;background:var(--tv);color:#1C1737;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center}
+.pts{margin-top:14px}
+.c>.pts{flex:1 1 auto;display:flex;flex-direction:column;justify-content:space-between}
+.pts>div{padding:14px 0;border-top:1px solid var(--hair);font-size:15px;color:var(--sec)}
+.pts>div:first-child{border-top:0}
+.pts b{display:block;font-weight:500;color:var(--text);margin-bottom:2px;font-size:16px}
+.q{font-family:Newsreader,Georgia,serif;font-optical-sizing:auto;font-size:clamp(34px,3.8vw,52px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+.mh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.seg{display:inline-flex;padding:3px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--hair)}
+.seg button{font:inherit;font-size:13.5px;font-weight:500;height:34px;padding:0 16px;border:0;border-radius:99px;background:none;color:var(--sec);cursor:pointer}
+.seg button[aria-pressed=true]{background:#F3F0E8;color:#121211}
+.outs{margin-top:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 26px}
+.outs>div{padding-top:14px;border-top:1px solid var(--hair);font-size:13px;color:var(--lab)}
+.outs b{display:block;font-weight:400;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.03em;color:var(--text);margin-bottom:2px}
+.sl{margin-top:26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 26px}
+.sl label{display:block;font-size:13px;color:var(--lab)}
+.sl output{display:block;margin-top:2px;font-size:20px;letter-spacing:-.02em;color:var(--text)}
+input[type=range]{display:block;width:100%;margin:10px 0 0;accent-color:#A99DFF;touch-action:pan-y}
+input:focus-visible,a:focus-visible,button:focus-visible,.trk:focus-visible,.seg3 span:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.pill{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:99px;background:var(--text);color:var(--page);font-size:14px;font-weight:500;text-decoration:none;margin-top:18px;align-self:flex-start}
+.fine{max-width:96ch;font-size:13.5px;line-height:1.6;color:var(--sec)}
+.srcs{margin-top:22px;padding-left:18px;columns:2 340px;column-gap:44px;font-size:13px;line-height:1.5;color:var(--lab)}
+.srcs li{margin-bottom:8px;break-inside:avoid}
+.srcs a{text-decoration:underline;text-decoration-color:var(--hair);text-underline-offset:3px}
+footer{padding:clamp(48px,7vw,96px) 0 40px;font-size:13px;color:var(--dim)}
+footer a{color:var(--sec)}
+#tip{position:fixed;z-index:20;pointer-events:none;background:var(--text);color:var(--page);font-size:12.5px;line-height:1.4;padding:7px 11px;border-radius:10px;max-width:260px}
+@media (max-width:1020px){.tl{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}.tl>div:nth-child(6n+1){border-top:1px solid var(--hair)}.tl>div:first-child{border-top:0}.s5,.s7,.s8,.pr,.pr.w8{grid-column:span 12}.s4{grid-column:span 6}.s4.t12{grid-column:span 12}.steps,.steps.n3{grid-template-columns:repeat(2,minmax(0,1fr))}.outs{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 26px}}
+@media (max-width:640px){.s4,.s6{grid-column:span 12}.grid{gap:12px}.sl{grid-template-columns:1fr}.steps,.steps.n3{grid-template-columns:1fr}.top .w>span:last-child{display:none}.tb{font-size:13.5px}.tb td,.tb th{padding-left:8px}.tb.tx{min-width:0;table-layout:auto}.tb.tx tr:first-child{display:none}.tb.tx tr{display:block;padding:12px 0;border-top:1px solid var(--hair)}.tb.tx tr:nth-child(2){border-top:0;padding-top:0}.tb.tx td{display:block;border:0;padding:2px 0}.tb.tx td:nth-child(3){color:var(--text)}.bars{gap:12px 10px}.bars .lab,.bars .val{font-size:13.5px}}
+</style></head><body>
+
+<div class="top"><div class="w"><span><span class="dot"></span><b>Keegan Selby</b><a href="../">← keeganselby.com</a></span><span>Research note · 12 Nov 2026</span></div></div>
+
+<main class="w">
+
+<section>
+  <div class="eb">The DeFi Opportunity, six years later</div>
+  <h1><i>Why</i> ether.fi Business <i>is the most bullish thing about</i> ETHFI<i>.</i></h1>
+  <p class="lede">A defibank's best customer is a company. Here is the math on the card, the balances, the borrow and the buybacks, and where I think the token goes.</p>
+  <p class="byl"><b>By Keegan Selby, Co-Founder at 4RC.</b> Up front: I hold ETHFI, 4RC was in ether.fi's seed round and is a customer, and I am not a neutral observer. Full disclosures are at the bottom.</p>
+  <div class="grid">
+    <div class="c dark s4"><div class="l">Card spend</div><div class="f">$1.1<i>B</i></div><p>In under two years, from a first day of $5.89.</p></div>
+    <div class="c s4"><div class="l">Card growth in a year</div><div class="f">4.2<i>x</i></div><p>The crypto card market grew about 3x. ether.fi is now #2.</p></div>
+    <div class="c s4"><div class="l">Revenue going to buybacks</div><div class="f">28<i>%</i></div><p>Buying ETHFI on the open market every day, in code.</p></div>
+    <div class="c s4"><div class="l">Payments revenue pool</div><div class="f">$2.5<i>T</i></div><p>The market ether.fi has moved into from staking.</p></div>
+    <div class="c s4"><div class="l">Price to revenue</div><div class="f">13<i>x</i></div><p>Revolut is valued at about 19x and Ramp at 22 to 44x.</p></div>
+    <div class="c lilac s4"><div class="l">My 2030 target <span class="est">Estimate</span></div><div class="f">$5</div><p>About 8x today's $0.62, by the end of 2030.</p></div>
+    <div class="pr w8" style="margin-top:clamp(20px,3vw,40px)">
+      <p>Back in April 2020 I wrote a five part series called <a href="https://medium.com/the-defi-opportunity/the-defi-narrative-63c58f222028">The DeFi Opportunity</a>. The premise was that DeFi's first job was to rebuild the products that run the modern economy (payments, lending, investing) without rent-seeking intermediaries in the middle. Six years later, ether.fi is the closest thing I've seen to that thesis shipping at scale: a card that spends from a self-custodied account, a credit line backed by an Aave market, and yield on whatever's sitting there, in 199 countries.</p>
+      <p>Retail got there first. The part the market is still underpricing is <b>ether.fi Business</b>, and on November 6th Mike Silagadze made it official that they're hiring a dedicated CEO to go all in on it. I think that's massively bullish for ETHFI, and I've tried to make the case with numbers rather than vibes.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The first billion</div>
+  <h2><i>From</i> $5.89 <i>to</i> $1.1 billion <i>in under two years.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>On October 17th ether.fi Cash <a href="https://www.ether.fi/one-billion">crossed $1B in card spend</a>, under 23 months after the first five swipes totaled $5.89. It passed $1.1B three weeks later. Along the way: 12.6M+ purchases, 117,000+ accounts, 172,000 cards and 199 countries.</p>
+      <p>Two details on that page matter more than the headline. Purchases over $1,000 were only 1% of the count but half of the dollars, and software plus advertising was ~$87M of spend, on top of 177,984 payments to OpenAI and Anthropic. That's business spend running through consumer accounts, i.e., companies were already using ether.fi before there was a product actually built for them.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">The last $100M before the billion</div><div class="f">22 <i>days</i></div><p>September 2026 alone added $128.8M of card spend.</p></div>
+    <div class="c">
+      <div class="l">$ millions, selected months</div><h3>Monthly card spend keeps compounding</h3>
+      <div class="bars" id="c-spend"></div>
+      <div class="nt">Sources: ether.fi (Jan, Jul and Sep 2026) and Paymentscan via cryptocards.so (Oct 2025 and Oct 2026).</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The pivot</div>
+  <h2><i>Trading up from a</i> $90M <i>market to a</i> $2.5 trillion <i>one.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>In April 2025 ether.fi published <a href="https://x.com/ether_fi/status/1915391012241121724">Building a $1B Revenue DeFi Protocol</a>: a path to $1B of revenue at 30–40% margins, up to 25% of revenue for ETHFI buybacks, and a Cash business serving 6–8M retail users and <b>25,000 corporate clients</b>.</p>
+      <p>Since then the mix has flipped. The card went from 17% of monthly revenue in January to 46% by July, and Mike has said the revenue run-rate is on track to grow ~38% this year (<a href="https://www.coininsider.org/news/ether-fi-exits-restaking-as-fee-data-shows-sector-earning-little/">CoinInsider</a>). The three trackers ether.fi links from its own footer show $3.8–4.3M of revenue over the last 30 days (<a href="https://dune.com/ether_fi/etherfi">Dune</a>, <a href="https://defillama.com/protocol/ether.fi">DefiLlama</a>, <a href="https://tokenterminal.com/explorer/projects/etherfi">Token Terminal</a>), so call it ~$46M annualized.</p>
+      <p>I read that as trading up. ether.fi won liquid restaking outright and is still the #3 ETH staking token in the world with 1.9M ETH and ~11% share (<a href="https://defillama.com/lst">DefiLlama</a>). It moved into a market tens of thousands of times bigger while it was still on top of the one it came from.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">Revenue per dollar on the platform</div><div class="f">2.3<i>x</i></div><p>An old model of mine has ether.fi earning $2.58M in July 2024 on $6.4B of TVL. Today it earns ~$3.8M a month on ~$4.1B.</p></div>
+    <div class="c">
+      <div class="l">Annual revenue pool</div><h3>The market ether.fi came from, and the one it moved into</h3>
+      <div class="bars" id="c-scale"></div>
+      <div class="nt">The top bar is drawn far too big so that you can see it at all. To scale it would be about 1/28,000th of the bottom one. $35B of ETH liquid staking TVL (DefiLlama) at a ~2.5% yield and the standard 10% fee is my math. Payments revenue is from McKinsey's 2025 Global Payments Report.</div>
+    </div>
+    <div class="c">
+      <div class="l">Aug 13 to Nov 12, 2026</div><h3>Ninety days of shipping, for a team this size</h3>
+      <div class="tl">
+        <div><time>Aug 13</time><span>Tokenized stocks and metals, and Aave V4 credit</span></div>
+        <div><time>Aug 20</time><span>The Aave market passes $100M of deposits in week one</span></div>
+        <div><time>Aug 24</time><span>Native BTC deposits</span></div>
+        <div><time>Aug 26</time><span>Binance Wallet starts distributing ether.fi's vaults</span></div>
+        <div><time>Sep 12</time><span>Programmatic ETHFI buybacks go live</span></div>
+        <div><time>Sep 22</time><span>21Shares lists an ETHFI ETP on Euronext</span></div>
+        <div><time>Oct 6</time><span>ether.fi USD, its own stablecoin, launches</span></div>
+        <div><time>Oct 13</time><span>MoonPay on and off ramps inside the app</span></div>
+        <div><time>Oct 17</time><span>$1B of card spend</span></div>
+        <div><time>Oct 21–23</time><span>AI connector, business statements, Zeal acquired</span></div>
+        <div><time>Nov 6</time><span>Search opens for a CEO of ether.fi Business</span></div>
+        <div><time>Nov 12</time><span>Mint and redeem 1,500+ tokenized stocks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">Built to last</div>
+  <h2><i>No wood chipper.</i> Boring on purpose<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>Of everything we've tried with blockchains (NFTs, the metaverse, play-to-earn, web3 social), the use cases with durable product market fit turned out to be financial: stablecoins, RWAs, borrow/lend, trading. A few others have had their moments (memecoins, launchpads, etc.), but I share Mike's view that if you keep feeding users into the wood chipper for max extraction, you eventually run out of users.</p>
+      <p>ether.fi has done the opposite. While others lured users in with triple digit APYs, rigged points programs and obscene leverage, it kept liquidation thresholds conservative. That left borrowing power (and the interest revenue that comes with it) on the table, but it kept users out of the liquidation engine through flash crash wicks and long drawdowns. Same on security: when several Solana-based crypto neobanks were hit by an exploit in August, ether.fi was unaffected, and after October's run of exchange hacks its recap was simply "Our October was boring by comparison. And boring is good."</p>
+      <p>That's the kind of institutional grade model a business will actually sign up for. No CFO wants their company associated with the corner of crypto that profits off livestreams of people in cages, celebrity coins and rug pulls. ether.fi looks less crypto-forward on purpose, and pairs a better product (cheaper, faster, global, more options) with the things real businesses demand: 1% cashback priced to last, credit limits a board can sign off on, and up to $500K of account protection that's been announced and is on the way.</p>
+    </div>
+    <div class="c lilac s5 kp"><div class="l">Mike Silagadze on the exchange and launchpad model</div><div class="q">"It's just a wood chipper."</div><p>Bankless, August 2026. He said he'd rather go out of business than run ether.fi that way.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">Unit economics</div>
+  <h2><i>One business is worth</i> many retail accounts<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>ether.fi earns on six lines: card interchange, a share of the yield on balances, a cut of borrowing through its Aave market (it keeps 80% of that market's revenue), FX and payments, swaps and investing, and membership. The retail card is profitable thanks to cashback caps and breakage. The business card is profitable before either kicks in, because business cashback is 1% against a 3% headline on retail.</p>
+      <p>I'll use 4RC as the example. We've run our fund expenses on ether.fi cards since mid-2025, across five entities. The payments go to the vendors every fund has (the administrator, custody software, lawyers), almost all of them are over $1,000, and our average payment is dozens of times the network average of $80.22. Behind the cards is a treasury that stays on the platform, with a modest borrow against it that just stays drawn.</p>
+      <p>For what it's worth, the April 2025 plan put corporate LTV at $1,200–1,800 for the <i>lifetime</i> of the customer. By my math that's one year of card revenue alone.</p>
+    </div>
+    <div class="c dark s5 kp">
+      <div class="l">One active business, a year <span class="est">Estimate</span></div>
+      <div class="f"><i>about</i> $5,700</div>
+      <div class="seg3" id="c-biz" role="img" aria-label="Revenue per business by line; values in the table below">
+        <span style="flex:1200;background:var(--v)" tabindex="0" data-tip="<b>Card</b><br>$1,200 a year"></span>
+        <span style="flex:3000;background:var(--k)" tabindex="0" data-tip="<b>Balances and credit</b><br>$3,000 a year"></span>
+        <span style="flex:1500;background:var(--o)" tabindex="0" data-tip="<b>Payments and FX</b><br>$1,500 a year"></span>
+      </div>
+      <div class="ln">
+        <div class="r"><div><span><i style="background:var(--v)"></i><b>Card</b></span><small>$25K a month at 0.4% after cashback</small></div><em>$1,200</em></div>
+        <div class="r"><div><span><i style="background:var(--k)"></i><b>Balances</b></span><small>$500K on the platform at 0.4%</small></div><em>$2,000</em></div>
+        <div class="r"><div><span><i style="background:var(--k)"></i><b>Credit</b></span><small>10% of balances borrowed at a 2 pt spread</small></div><em>$1,000</em></div>
+        <div class="r"><div><span><i style="background:var(--o)"></i><b>Payments and FX</b></span><small>$1M a year of flow at 0.15%</small></div><em>$1,500</em></div>
+      </div>
+    </div>
+    <div class="c s4"><div class="l">Wider margins</div><h3>The card line is conservative</h3><p>ether.fi's own Dune dashboard books 1.75% of card spend as revenue. At that rate the card line would be $2,250.</p></div>
+    <div class="c s4"><div class="l">Bigger balances</div><h3>Cash sits where the bills get paid</h3><p>Mercury makes most of its ~$650M–1B of revenue on interest from ~$20B of deposits (Sacra).</p></div>
+    <div class="c s4 t12"><div class="l">Stickier borrowing</div><h3>Nobody should sell ETH to make payroll</h3><p>A company borrows against its treasury for recurring bills and stays drawn. Even at a 0.5 pt spread the total is ~$4,950.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The market</div>
+  <h2><i>Priced below</i> the fintechs it's chasing<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>Mike has called neobanking <a href="https://www.bankless.com/read/etherfis-bet-against-cryptos-casino-economy">"a $300 billion revenue industry."</a> I fact checked it. As revenue neobanks earn today it's high (Revolut, the biggest in the West, did £4.5B in 2025). As the pool they're taking share from, it's conservative for business: McKinsey put bank revenue from small and mid-sized businesses at ~$850B a year back in 2019, US small business banking alone is ~$150B, and US commercial card volume was $2.23T in 2024 (<a href="https://nilsonreport.com/articles/us-commercial-cards-amex-mastercard-and-visa-in-2024/">Nilson</a>). The modern players have barely scratched it, and look at what the market pays for them.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">Rank among crypto cards</div><div class="f">#2</div><p>And the largest card where every purchase can be verified onchain.</p></div>
+    <div class="c s6">
+      <div class="l">Valuation as a multiple of revenue</div><h3>ETHFI at 13x, Revolut at 19x, Ramp at 22 to 44x</h3>
+      <div class="bars" id="c-mult"></div>
+      <div class="nt">Ramp $44B on $1–2B (the lighter part is the range). Revolut $115B on ~£4.5B. Brex $5.15B on $700M. Mercury $5.2B on ~$0.8B. Slash $1.4B on ~$270M. ETHFI ~$620M fully diluted on ~$46M. Sources: company announcements, Sacra, TechCrunch, Token Terminal.</div>
+    </div>
+    <div class="c s6">
+      <div class="l">Card spend in October 2026, $ millions</div><h3>Among crypto cards, ether.fi is the one to beat</h3>
+      <div class="bars" id="c-cards"></div>
+      <div class="nt">Source: Paymentscan via cryptocards.so. *RedotPay's figure is self-reported and offchain. ether.fi grew 4.2x in a year against ~3x for the market, while Gnosis Pay and MetaMask shrank.</div>
+    </div>
+    <div class="pr w8">
+      <p>Longer term I don't think "crypto neobank" stays its own category. ether.fi should just be a neobank one day, because the banks are coming the other way: Morgan Stanley and Citi are building crypto trading and custody, Coinbase, Circle and Ripple now hold national trust bank charters, 8 of Europe's top 20 banks offer crypto under MiCA, and Ramp rolled out stablecoin accounts to every customer in July. They're bolting crypto onto a bank while ether.fi bolts a bank onto crypto, and I like ether.fi's side of that trade. A bank adding crypto gets custody and a buy button. It doesn't get self-custody, DeFi yield on idle balances, a ~4% credit line against the whole portfolio or a 25-person cost base, because those would cannibalize how it makes money today.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The product</div>
+  <h2><i>What Business needs is mostly</i> low hanging fruit<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>I own and operate five entities on ether.fi (our funds, their management companies and our labs entities), and as the controller I reconcile all of it by hand every month. The fixes fall into two buckets, and none of them is hard. They haven't been built because the business account today is the retail product with corporate features bolted on, and nobody's full time job has been to build for a controller instead of a consumer.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">Entities I run on ether.fi</div><div class="f">5</div><p>Reconciled by hand, by me, every month.</p></div>
+    <div class="c s6">
+      <div class="l">Bucket one</div><h3>Basic fintech features that are easy to copy</h3>
+      <div class="pts">
+        <div><b>A real Pay product</b>The weakest part of ether.fi for a business today, and the easiest to fix because Mercury drew the blueprint. Drop in an invoice, the system reads it and matches the amount and the vendor's bank details, you approve or set auto-pay, it routes through approval levels by amount, pays approved vendors only, and blocks duplicates and anything that looks fraudulent.</div>
+        <div><b>Payroll and non-card vendors</b>Through integrations, not built from scratch.</div>
+        <div><b>Books that keep themselves</b>Categories, sync to QuickBooks, Xero and NetSuite, and a read-only seat for the fund admin and auditor.</div>
+      </div>
+    </div>
+    <div class="c s6">
+      <div class="l">Bucket two</div><h3>Built for retail, needs a business version</h3>
+      <div class="pts">
+        <div><b>One login across entities</b>Today each of my entities is basically a card nickname, and I total spend by entity by hand.</div>
+        <div><b>Interest attributed to the entity that ran it up</b>All five borrow against one account, so I split the interest by card spend in a spreadsheet every month.</div>
+        <div><b>Protection and credit policy a board can sign</b>With alerts and automatic deleveraging.</div>
+        <div><b>Treasury sweeps</b>Keep X days of cash liquid and put the rest in vaults or tokenized T-bills.</div>
+      </div>
+    </div>
+    <div class="pr w8">
+      <p>Past parity, an onchain account can do things a bank never will: a payroll line drawn against the treasury inside a board policy, fund rails (capital calls into per-investor accounts, distributions in dollars or stablecoins), a treasury match on balances that stay, and a month-end close inside the AI connector, where every transaction posts by rule and the period locks with a fingerprint. That last one is how CFAgent, the fund admin and NAV agent I co-founded, already works for digital-asset funds.</p>
+      <p>And here's what none of the incumbents can copy. The whole balance sheet earns, backs a credit line and pays the bills while the company keeps custody. Settlement between two ether.fi accounts never closes. And as of November 12th a treasury can hold 1,500+ tokenized stocks, T-bills and gold in the same account and borrow against all of it. Mercury, Brex, Ramp and Slash stop at dollars and stablecoins.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The hire</div>
+  <h2><i>A dedicated CEO turns a feature</i> into a business<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>On November 6th Mike <a href="https://x.com/MikeSilagadze/status/2118791248358351263">posted</a> that ether.fi is hiring a CEO for ether.fi Business, with their own team, control of the product and go-to-market, and the job to "make this into a billion dollar business unit."</p>
+      <p>I think this is the game changer. Business runs on a different machine than retail: channel partners, integrations, board grade controls and credit policy instead of cashback and card designs. As a feature inside retail it gets whatever engineering is left over at the end of the sprint. As its own unit it gets a roadmap and a P&amp;L, pointed at the highest margin piece of ether.fi's own plan. Retail needs millions of users to produce what 25,000 businesses would.</p>
+      <p>The playbook is sitting there for whoever takes the job. Start with the crypto-native core (funds, protocols, treasuries and DATs), then CeFi companies, then everyone else. Sell through the people who each serve fifty companies (fund administrators, law firms, investors), with a free seat for accountants and auditors. Start beside the bank by showing a company's existing balances read-only, and earn the right to replace it.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">25,000 corporate clients at ~$5,700 each <span class="est">Estimate</span></div><div class="f">$142<i>M</i></div><p>Of revenue a year, from the corporate target in ether.fi's own plan.</p></div>
+    <div class="c">
+      <div class="l">The playbook</div><h3>Steal from the best</h3>
+      <div class="tw"><table class="tb tx">
+        <tr><th>From</th><th>What it proved</th><th>What ether.fi Business does with it</th></tr>
+        <tr><td>Revolut Business</td><td>A neobank's business arm can reach $1B of revenue</td><td>Paid plans, and prompt members who own companies</td></tr>
+        <tr><td>Robinhood</td><td>5.2M Gold subscribers, and a match on money that stays</td><td>A treasury match with a holding period</td></tr>
+        <tr><td>Ramp</td><td>2,500+ businesses connected an AI assistant in months</td><td>Draft with the assistant, approve with a passkey</td></tr>
+        <tr><td>Hyperliquid</td><td>About a dozen people, with partners paid on-chain</td><td>Pay administrators and advisers a disclosed share</td></tr>
+        <tr><td>Fireblocks</td><td>Institutions buy policy: approvers, limits, audit trail</td><td>Sell the controls before the yield</td></tr>
+      </table></div>
+    </div>
+    <div class="c">
+      <div class="l">How a payment rail of ether.fi's own can start</div><h3>Every invoice is a referral</h3>
+      <div class="steps">
+        <div><span class="chip">1</span>A customer pays a vendor as they do today, with one line added: get paid instantly next time.</div>
+        <div><span class="chip">2</span>The vendor opens an account to get paid in seconds and keep the 2.5–3% it loses to card fees.</div>
+        <div><span class="chip">3</span>That vendor's other clients are the next prospects. Mine each bill hundreds of companies like us.</div>
+        <div><span class="chip">4</span>Payments between two accounts settle account to account, with no terminal involved.</div>
+      </div>
+      <div class="nt">A consumer rail needs enormous scale before merchants bother to integrate. Between businesses it only needs two companies and an invoice. ether.fi gives up interchange on those payments and gets back the balances and credit every new business brings.</div>
+    </div>
+    <div class="pr w8">
+      <p>A good first year, by my estimate: 1,000 active businesses, $500M of balances, $300M of annualized card spend, $50M of credit drawn and zero business accounts liquidated. And the ground rules shouldn't change: the customer keeps the keys, ether.fi never earns from a liquidation, and a 40% price move doesn't wipe out a business.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The token</div>
+  <h2><i>Buybacks are now</i> in the code<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>This is what ties all of the above back to ETHFI. The programmatic buyback went live on September 12th. In the Foundation's words: "Every time you swipe your card, trade, stake, or borrow → a portion of that revenue buys ETHFI on the open market." Every purchase is on a <a href="https://dune.com/ether_fi/ethfi-buybacks">public dashboard</a>, and the <a href="https://x.com/ether_fi_Fdn">ether.fi Foundation</a> posts the tally every week.</p>
+      <p>And it builds on a track record: $16.6M of ETHFI was bought back between July 2024 and April 2026, before the program was put in code.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">ETHFI bought in the first two months</div><div class="f">3<i>M+</i></div><p>$2.12M spent on the open market as of November 12th.</p></div>
+    <div class="c s6">
+      <div class="l">USDT spent buying ETHFI, by reporting week</div><h3>About $250K a week, and a record last week</h3>
+      <div class="bars" id="c-buy"></div>
+      <div class="nt">Source: ether.fi Foundation weekly updates. The running total crossed 3M ETHFI on November 11th.</div>
+    </div>
+    <div class="c s6">
+      <div class="l">What it adds up to</div><h3>A share of every dollar of revenue</h3>
+      <div class="pts">
+        <div><b>~$13M a year, about 28% of revenue</b>The April 2025 plan promised "up to 25%," and they're delivering it.</div>
+        <div><b>It scales with revenue automatically</b>25,000 businesses would fund ~$35.6M a year, nearly three times the program today.</div>
+        <div><b>Cashback is market-bought ETHFI</b>Rewards are paid from open-market purchases, so they double as buy pressure.</div>
+        <div><b>Supply is fixed at 1B</b>The last scheduled unlock is March 2027, per the <a href="https://etherfi.gitbook.io/gov/ethfi-allocations">official allocations</a>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The upside</div>
+  <h2><i>Five things that</i> aren't in my model<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p><b>Card margin.</b> I only caught this by reading the SQL behind ether.fi's Dune dashboard: it booked 1.38% of card spend as revenue until December 2025 and has booked 1.75% since. My model uses ~1.4%. Closing that gap nearly doubles the business card margin and takes my base case 2030 value from $1.35 to about $2.04 per token.</p>
+      <p><b>Owning the stack.</b> Today the card is issued by Third National, with Rain in the settlement stack. Rain raised at a $1.95B valuation in January, and ether.fi is about a quarter of the volume it settles. The April 2025 plan called for "in-house card issuing &amp; settlement to boost margins." Owning licenses where its biggest spenders and business volume sit would add margin on every swipe plus the float on fiat balances, which is the line that makes Mercury most of its money.</p>
+      <p><b>The whole balance sheet moves onchain.</b> Tokenized real-world assets are ~$39B today against forecasts in the trillions, and stablecoin payments ran at $482B through September, up 45%. Every asset that gets tokenized is one more thing a company can hold in an ether.fi account and borrow against.</p>
+      <p><b>Distribution it doesn't have to pay for.</b> Binance Wallet distributes its vaults, Aave runs its credit, its card volume is most of Optimism's card settlement, Ethena powers its stablecoin, and 21Shares gives ETHFI a regulated route to European investors. Every one of those partners has a treasury and an ecosystem of companies that need a business account.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">Card margin ether.fi already books <span class="est">Estimate</span></div><div class="f">+$51<i>M</i></div><p>A year in my base case, from the 1.75% on its own dashboard against the 1.4% in my model.</p></div>
+    <div class="c">
+      <div class="l">Agentic payments for businesses</div><h3>The one I'm most excited about, and why ether.fi wins it</h3>
+      <div class="steps n3">
+        <div><span class="chip">1</span>An agent can't open a bank account. It can be handed a key to a smart contract account with a spending cap, a merchant allowlist and an expiry, enforced in code. ether.fi's accounts already are smart contracts.</div>
+        <div><span class="chip">2</span>Agents pay in sub-dollar increments, around the clock and across borders. That's a stablecoin job, and ether.fi has its own stablecoin plus a Visa card behind one balance.</div>
+        <div><span class="chip">3</span>Its customers are already the heaviest AI spenders around (177,984 payments to OpenAI and Anthropic), and its AI connector is live.</div>
+      </div>
+      <div class="nt">Gartner projects $15T of B2B spend intermediated by AI agents by 2028 and McKinsey has agentic commerce at $3–5T by 2030 (<a href="https://stellagent.ai/insights/agentic-commerce-market-size-forecast-2030">compiled here</a>). The leading onchain agent protocol has done 138M+ transactions but only ~$19M of real volume, so the market is basically pre-launch, and Ramp, Visa, Mastercard, Stripe and Coinbase are all lining up for it.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">The number</div>
+  <h2><i>What ETHFI could be worth</i> in 2030<i>.</i></h2>
+  <div class="grid">
+    <div class="pr">
+      <p>In 2020 I valued Synthetix with a DCF at a 25% discount rate "to account for the higher risk premium of decentralized trading platforms." I'm using the same 25% here.</p>
+      <p>ETHFI trades at ~$0.62, which is ~$620M fully diluted or ~13x revenue. Here's the stat that gets me: at the March 2024 peak of $8.53 the market paid ~$8.5B for a business doing $26M of revenue. Today it pays ~13x for one with a bank attached.</p>
+      <p>Four scenarios for 2030, with Business built bottom up (number of companies, card spend, balances, share borrowed, payment flow) and the rest of ether.fi layered on top.</p>
+    </div>
+    <div class="c s5 kp"><div class="l">Price to revenue, 2024 peak and today</div><div class="f">330<i>x →</i> 13<i>x</i></div><p>$8.5B for $26M of revenue then. ~$620M for ~$46M now.</p></div>
+    <div class="c">
+      <div class="l">2030 scenarios, and ether.fi's $1B plan <span class="est">Estimate</span></div><h3>Business is the swing factor between base and bull</h3>
+      <div class="tw"><table class="tb">
+        <tr><td></td><th scope="col">Bear</th><th scope="col">Base</th><th scope="col">Bull</th><th scope="col">Plan</th></tr>
+        <tr><th scope="row">Active businesses</th><td>5,000</td><td>15,000</td><td>30,000</td><td>25,000</td></tr>
+        <tr><th scope="row">Business balances</th><td>$1.5B</td><td>$7.5B</td><td>$22.5B</td><td></td></tr>
+        <tr><th scope="row">Business revenue</th><td>$14M</td><td>$93M</td><td>$328M</td><td></td></tr>
+        <tr><th scope="row">Total revenue</th><td>$84M</td><td>$258M</td><td>$648M</td><td>$1B</td></tr>
+        <tr><th scope="row">Net margin</th><td>25%</td><td>35%</td><td>40%</td><td>35%</td></tr>
+        <tr><th scope="row">Annual buybacks</th><td>$21M</td><td>$77M</td><td>$194M</td><td>$250M</td></tr>
+        <tr><th scope="row">Earnings multiple</th><td>10x</td><td>15x</td><td>20x</td><td>15x</td></tr>
+        <tr class="em"><th scope="row">Value per token, end of 2030</th><td>$0.21</td><td>$1.35</td><td>$5.18</td><td>$5.25</td></tr>
+        <tr><th scope="row">Worth today at 25%</th><td>$0.11</td><td>$0.66</td><td>$2.38</td><td>$2.15</td></tr>
+      </table></div>
+      <div class="bars" id="c-scen"></div>
+    </div>
+    <div class="c s4"><div class="l">Read one</div><h3>The base case is roughly today's price</h3><p>At $0.62 you aren't paying anything for the bull case.</p></div>
+    <div class="c s4"><div class="l">Read two</div><h3>Business alone could be worth the whole company</h3><p>$93M of base case Business revenue at a Mercury or Brex multiple (~7x) is ~$650M, more than ETHFI's market cap today.</p></div>
+    <div class="c s4 t12"><div class="l">Read three</div><h3>The buyback becomes a flywheel</h3><p>In ether.fi's own plan case, the protocol buys back the equivalent of 40% of today's market cap every year.</p></div>
+    <div class="c dark">
+      <div class="mh">
+        <div><div class="l">Value per token, end of 2030 <span class="est">Estimate</span></div><div class="f" id="m-v30">$1.35</div></div>
+        <div class="seg" role="group" aria-label="Scenario">
+          <button type="button" id="m-bear" data-p="bear" aria-pressed="false">Bear</button>
+          <button type="button" id="m-base" data-p="base" aria-pressed="true">Base</button>
+          <button type="button" id="m-bull" data-p="bull" aria-pressed="false">Bull</button>
+        </div>
+      </div>
+      <div class="outs">
+        <div><b id="m-pv">$0.66</b>Worth today at your discount rate</div>
+        <div><b id="m-x">2.2x</b>2030 value against today's $0.62</div>
+        <div><b id="m-rev">$258M</b>Total 2030 revenue</div>
+        <div><b id="m-bb">$77M</b>Buybacks a year</div>
+      </div>
+      <div class="sl" id="m-sl"></div>
+      <div class="nt">Change my assumptions: pick a case, then drag the drivers. The rest of each case stays as in the table above.</div>
+    </div>
+    <div class="c s6">
+      <div class="l">Sanity check <span class="est">Estimate</span></div><h3>The same 2030 numbers through three other lenses</h3>
+      <table class="tb">
+        <tr><td>2030 value per token</td><th scope="col">Base</th><th scope="col">Bull</th></tr>
+        <tr><th scope="row">My earnings multiple (15x / 20x)</th><td>$1.35</td><td>$5.18</td></tr>
+        <tr><th scope="row">SoFi's P/E today (~29x)</th><td>$2.62</td><td>$7.51</td></tr>
+        <tr><th scope="row">Mercury and Brex revenue multiple (~7x)</th><td>$1.81</td><td>$4.53</td></tr>
+        <tr><th scope="row">Buyback yield of ~7%, as for Hyperliquid</th><td>$1.11</td><td>$2.78</td></tr>
+      </table>
+      <div class="nt">Public fintechs trade well above my multiples (SoFi at ~29x earnings, Robinhood at ~40–50x), so the earnings lens is conservative. The buyback yield lens is the strictest, and $5 sits in the middle of the range.</div>
+    </div>
+    <div class="c lilac s6">
+      <div class="l">My prediction <span class="est">Estimate</span></div>
+      <div class="f xl">$5</div>
+      <h3 style="margin-top:18px">ETHFI hits $5 by the end of 2030, about 8x from here.</h3>
+      <p>On the back of ether.fi Business reaching 30,000 companies with $20B+ of balances. Along the way I expect it to clear $2 before the end of 2028. For context, $5 is still ~40% below the 2024 all-time high, which was set before the card existed.</p>
+    </div>
+    <div class="pr w8">
+      <p>For the record, in that 2020 post I put a $6.44 target on SNX when it was trading at $0.70, and a $15 base case on LINK. Both blew through those targets in 2021. I've also made plenty of calls that missed, and this one depends on execution more than on a market cycle. But this is the cleanest setup I've seen since then: real revenue, a fixed supply that's nearly done unlocking, buybacks written into code, and a dedicated CEO for the business line most likely to drive it all.</p>
+      <p>Hope you enjoyed and thanks for reading!</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eb">Disclosures and sources</div>
+  <p class="fine">All of the information above is for informational purposes only and is not to be taken as investment or financial advice, or as an offer or solicitation for any security or fund interest. I hold a significant ETHFI position (mostly staked) and may add to it. 4RC Ventures was in ether.fi's seed round and is an ether.fi Business customer; where I describe how a business uses the account, I'm describing ours, without its figures. Every ether.fi figure comes from the sources below and every projection is my own estimate. ether.fi is not a bank, and borrowing against volatile collateral can get you liquidated. As in 2020, I abide by a no trade policy 3 days before and after publishing.</p>
+  <ol class="srcs">
+    <li>ether.fi: <a href="https://www.ether.fi/one-billion">$1B in card spend</a>; <a href="https://x.com/ether_fi/status/1915391012241121724">Building a $1B Revenue DeFi Protocol</a> (Apr 2025); <a href="https://www.ether.fi/business">Business accounts</a>; <a href="https://etherfi.gitbook.io/gov/ethfi-allocations">ETHFI allocations</a>; <a href="https://x.com/ether_fi">@ether_fi</a></li>
+    <li>ether.fi Foundation: <a href="https://x.com/ether_fi_Fdn">weekly buyback updates</a>; <a href="https://dune.com/ether_fi/ethfi-buybacks">ETHFI Buybacks dashboard</a></li>
+    <li>ether.fi's analytics links, read Nov 12, 2026: <a href="https://dune.com/ether_fi/etherfi">Dune</a>, <a href="https://defillama.com/protocol/ether.fi">DefiLlama</a>, <a href="https://tokenterminal.com/explorer/projects/etherfi">Token Terminal</a>; DefiLlama <a href="https://defillama.com/lst">ETH liquid staking rankings</a></li>
+    <li>Mike Silagadze: <a href="https://x.com/MikeSilagadze/status/2118791248358351263">Business CEO post</a> (Nov 6, 2026); <a href="https://www.bankless.com/read/etherfis-bet-against-cryptos-casino-economy">Bankless</a> (Aug 2026); <a href="https://www.techflowpost.com/en-US/article/33308">TechFlow write-up</a></li>
+    <li>CoinInsider, <a href="https://www.coininsider.org/news/ether-fi-exits-restaking-as-fee-data-shows-sector-earning-little/">ether.fi's revenue mix</a> (Sep 29, 2026); The Block, <a href="https://theblock.co/news/defi/2026-08-13-ether-fi-adds-tokenized-stocks-metals-and-aave-powered-portfolio-loans-in-latest-neobank-expansion-411704">August release</a></li>
+    <li>CoinGecko, <a href="https://www.coingecko.com/en/coins/ether-fi">ETHFI price and all-time high</a> (Nov 12, 2026)</li>
+    <li>Paymentscan via <a href="https://www.cryptocards.so/en/blog/crypto-card-statistics">cryptocards.so</a> (updated Nov 6, 2026)</li>
+    <li>Competitors: <a href="https://www.gic.com.sg/newsroom/all/ramp-raises-series-f-at-44-billion-valuation/">Ramp Series F</a>; Sacra on <a href="https://sacra.com/c/ramp/">Ramp</a>, <a href="https://sacra.com/c/mercury/">Mercury</a>, <a href="https://sacra.com/c/brex/">Brex</a>, <a href="https://sacra.com/c/slash/">Slash</a>; <a href="https://techcrunch.com/2026/11/04/revoluts-valuation-jumps-53-to-115b-in-new-share-sale-as-it-prepares-to-launch-us-bank/">Revolut at $115B</a>; <a href="https://www.theblock.co/post/384910/rain-valuation-nears-2-billion-usd-series-c-250-million-raise">Rain at $1.95B</a></li>
+    <li>Banks and crypto: <a href="https://www.coindesk.com/business/2026/02/27/citi-and-morgan-stanley-expand-bitcoin-and-crypto-custody-trading-and-tokenization-efforts">Citi and Morgan Stanley</a>; <a href="https://cointelegraph.com/news/coinbase-occ-approval-national-trust-bank-charter">national trust charters</a>; <a href="https://www.tradingview.com/news/coinpedia:8970d1c0f094b:0-european-banks-are-moving-into-crypto-who-s-live-who-s-lagging-and-what-s-next/">European banks under MiCA</a>; <a href="https://www.prnewswire.com/news-releases/ramp-brings-stablecoin-accounts-and-payments-to-all-customers-302830447.html">Ramp stablecoin accounts</a></li>
+    <li>Market size: McKinsey <a href="https://www.mckinsey.com/industries/financial-services/our-insights/global-payments-report">2025 Global Payments Report</a> and <a href="https://www.mckinsey.com/industries/financial-services/our-insights/how-banks-can-use-ecosystems-to-win-in-the-sme-market">SME banking</a>; <a href="https://nilsonreport.com/articles/us-commercial-cards-amex-mastercard-and-visa-in-2024/">Nilson</a></li>
+    <li>Agents and tokenization: <a href="https://stellagent.ai/insights/agentic-commerce-market-size-forecast-2030">agentic commerce forecasts</a>; <a href="https://www.coindesk.com/business/2026/10/14/ai-agents-make-138-million-crypto-payments-as-u-s-dominates-spending-on-ai-models">CoinDesk on x402</a>; <a href="https://open4business.com.ua/en/tokenized-real-world-assets-market-exceeds-39-billion-us-treasuries-reach-14-billion/">rwa.xyz data</a>; <a href="https://ambcrypto.com/stablecoin-supply-has-stalled-in-2026-but-payments-rose-by-45-to-480b-report/">Allium on stablecoin payments</a></li>
+    <li>Valuation comps: <a href="https://www.macrotrends.net/stocks/charts/SOFI/sofi-technologies/pe-ratio">SoFi P/E</a>; <a href="https://finbox.com/NASDAQGS:HOOD/explorer/pe_ltm/">Robinhood P/E</a>; <a href="https://alphawire.xyz/news/crypto-ecosystem/hype-pump-90-percent-record-638m-crypto-token-buybacks/">token buybacks</a></li>
+    <li>My 2020 series: <a href="https://medium.com/the-defi-opportunity/the-defi-narrative-63c58f222028">The DeFi Narrative</a>; <a href="https://medium.com/the-defi-opportunity/token-valuation-methods-6592761b21af">Token Valuation Methods</a></li>
+  </ol>
+</section>
+
+</main>
+<footer><div class="w">Keegan Selby, Co-Founder at 4RC. Written 12 Nov 2026. This is not an ether.fi page. Estimates are mine, from public data. <a href="../">Back to keeganselby.com</a></div></footer>
+<div id="tip" hidden></div>
+
+<script>
+const SUPPLY = 1e9, PRICE = 0.62;
+const usd = (n, d = 2) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+const big = n => n >= 1e9 ? "$" + (n / 1e9).toFixed(1) + "B" : "$" + Math.round(n / 1e6) + "M";
+const SC = {
+  bear: { biz: 5000, card: 15000, bal: 300000, borrow: 10, spread: 0.5, flow: 5e5, retail: 40, stake: 30, margin: 25, bb: 25, mult: 10, disc: 25 },
+  base: { biz: 15000, card: 25000, bal: 500000, borrow: 15, spread: 2, flow: 1e6, retail: 120, stake: 45, margin: 35, bb: 30, mult: 15, disc: 25 },
+  bull: { biz: 30000, card: 40000, bal: 750000, borrow: 20, spread: 2, flow: 2e6, retail: 250, stake: 70, margin: 40, bb: 30, mult: 20, disc: 25 }
+};
+function compute(x) {
+  const per = x.card * 12 * 0.004 + x.bal * 0.004 + x.bal * (x.borrow / 100) * (x.spread / 100) + x.flow * 0.0015;
+  const total = x.biz * per + x.retail * 1e6 + x.stake * 1e6;
+  const ni = total * x.margin / 100, buy = total * x.bb / 100, r = x.disc / 100;
+  const v30 = ni * x.mult / SUPPLY;
+  let pvbb = 0; for (let y = 1; y <= 4; y++) pvbb += buy * (y / 4) / Math.pow(1 + r, y);
+  return { total, buy, v30, pv: v30 / Math.pow(1 + r, 4) + pvbb / SUPPLY };
+}
+function start() {
+  const $ = id => document.getElementById(id), tip = $("tip");
+  const show = (x, y, html) => { tip.innerHTML = html; tip.hidden = false; tip.style.left = Math.max(8, Math.min(window.innerWidth - tip.offsetWidth - 8, x + 12)) + "px"; tip.style.top = (y + 14) + "px"; };
+  const hover = (el, html) => {
+    el.addEventListener("pointermove", e => show(e.clientX, e.clientY, html()));
+    el.addEventListener("pointerleave", () => { tip.hidden = true; });
+    el.addEventListener("focus", () => { const b = el.getBoundingClientRect(); show(b.left, b.bottom - 4, html()); });
+    el.addEventListener("blur", () => { tip.hidden = true; });
+  };
+  function bars(id, rows, fmt) {
+    const el = $(id), max = Math.max(...rows.map(r => r[1]));
+    for (const [lab, v, o = {}] of rows) {
+      const l = document.createElement("span"); l.className = "lab" + (o.on ? " on" : ""); l.textContent = lab;
+      const t = document.createElement("span"); t.className = "trk"; t.tabIndex = 0;
+      const f = document.createElement("i"); if (o.c) f.className = o.c;
+      f.style.width = o.px ? o.px + "px" : ((o.lo || v) / max * 100).toFixed(2) + "%"; if (o.px) f.style.minWidth = "0";
+      t.appendChild(f);
+      if (o.lo) { const x = document.createElement("i"); x.className = "ext"; x.style.left = (o.lo / max * 100).toFixed(2) + "%"; x.style.width = ((v - o.lo) / max * 100).toFixed(2) + "%"; t.appendChild(x); }
+      const val = document.createElement("span"); val.className = "val"; val.textContent = o.text || fmt(v);
+      el.append(l, t, val);
+      hover(t, () => "<b>" + lab + "</b><br>" + (o.tip || o.text || fmt(v)));
+    }
+  }
+  const m = v => "$" + v.toFixed(1) + "M";
+  bars("c-spend", [["Oct 2025", 33.5, { c: "v" }], ["Jan 2026", 54.3, { c: "v" }], ["Jul 2026", 100.3, { c: "v" }], ["Sep 2026", 128.8, { c: "v" }], ["Oct 2026", 141.9, { c: "v", on: true }]], m);
+  bars("c-scale", [["ETH liquid staking", 1, { px: 3, text: "~$90M", tip: "Fees across every ETH liquid staking protocol, by my math" }], ["Global payments", 28000, { c: "v", on: true, text: "~$2.5T", tip: "Global payments revenue in 2024, per McKinsey" }]], v => v);
+  bars("c-mult", [
+    ["Ramp", 44, { lo: 22, text: "22–44x", tip: "$44B on $1B+ reported in June, about $2B on Sacra's October estimate" }],
+    ["Revolut", 19, { text: "19x", tip: "$115B on about £4.5B of 2025 revenue" }],
+    ["ETHFI", 13, { c: "v", on: true, text: "13x", tip: "About $620M fully diluted on about $46M of run-rate revenue" }],
+    ["Brex", 7.4, { text: "7.4x", tip: "$5.15B sale to Capital One on $700M" }],
+    ["Mercury", 6.5, { text: "6.5x", tip: "$5.2B on about $0.8B" }],
+    ["Slash", 5, { text: "5x", tip: "$1.4B on about $270M" }]
+  ], v => v + "x");
+  bars("c-cards", [["RedotPay*", 423.5, { tip: "$423.5M, 30.9% share. Self-reported, offchain" }], ["ether.fi", 141.9, { c: "v", on: true, tip: "$141.9M, 10.3% share, up 4.2x in a year" }], ["KAST", 121.0, { tip: "$121.0M, 8.8% share" }], ["Wirex One", 54.8, { tip: "$54.8M, 4.0% share" }], ["Karta", 53.6, { tip: "$53.6M, 3.9% share" }], ["Gnosis Pay", 6.1, { tip: "$6.1M, down 50% in a year" }], ["MetaMask", 3.4, { tip: "$3.4M, down 44% in a year" }]], m);
+  bars("c-buy", [["Oct 5", 243117, 333111], ["Oct 12", 233113, 324981], ["Oct 19", 293228, 432217], ["Oct 26", 225030, 336346], ["Nov 2", 233983, 361538], ["Nov 9", 278026, 475619]].map(([l, v, e], i) => [l, v, { c: i === 5 ? "k" : "v", on: i === 5, text: "$" + Math.round(v / 1000) + "K", tip: "$" + v.toLocaleString("en-US") + " spent for " + e.toLocaleString("en-US") + " ETHFI" + (i === 5 ? ". A record week" : "") }]), v => v);
+  bars("c-scen", [["Today's price", 0.62, { tip: "ETHFI on Nov 12, 2026" }], ["Bear", 0.21, { c: "v" }], ["Base", 1.35, { c: "v" }], ["Bull", 5.18, { c: "v", on: true }], ["ether.fi's plan", 5.25, { c: "k", on: true, tip: "$1B of revenue at a 35% margin and 15x earnings" }]], v => usd(v));
+  for (const s of document.querySelectorAll("#c-biz span")) hover(s, () => s.dataset.tip);
+
+  const D = [
+    { id: "biz", label: "Active businesses", min: 0, max: 50000, step: 500, f: v => v.toLocaleString("en-US") },
+    { id: "card", label: "Card spend per business, a month", min: 5000, max: 100000, step: 1000, f: v => "$" + v.toLocaleString("en-US") },
+    { id: "bal", label: "Average balance per business", min: 100000, max: 2000000, step: 25000, f: v => v >= 1e6 ? "$" + (v / 1e6).toFixed(2) + "M" : "$" + Math.round(v / 1000) + "K" },
+    { id: "margin", label: "Net margin", min: 10, max: 50, step: 1, f: v => v + "%" },
+    { id: "mult", label: "Earnings multiple in 2030", min: 5, max: 40, step: 1, f: v => v + "x" },
+    { id: "disc", label: "Discount rate", min: 10, max: 40, step: 1, f: v => v + "%" }
+  ];
+  let cur = Object.assign({}, SC.base);
+  for (const d of D) {
+    const w = document.createElement("div");
+    w.innerHTML = '<label for="s-' + d.id + '">' + d.label + '</label><output id="so-' + d.id + '" for="s-' + d.id + '"></output><input type="range" id="s-' + d.id + '" min="' + d.min + '" max="' + d.max + '" step="' + d.step + '">';
+    $("m-sl").appendChild(w);
+    w.querySelector("input").addEventListener("input", e => { cur[d.id] = parseFloat(e.target.value); for (const b of document.querySelectorAll(".seg button")) b.setAttribute("aria-pressed", "false"); render(); });
+  }
+  function render() {
+    for (const d of D) { $("s-" + d.id).value = cur[d.id]; $("so-" + d.id).textContent = d.f(cur[d.id]); }
+    const r = compute(cur);
+    $("m-v30").textContent = usd(r.v30); $("m-pv").textContent = usd(r.pv); $("m-x").textContent = (r.v30 / PRICE).toFixed(1) + "x";
+    $("m-rev").textContent = big(r.total); $("m-bb").textContent = big(r.buy);
+  }
+  for (const b of document.querySelectorAll(".seg button")) b.addEventListener("click", () => { cur = Object.assign({}, SC[b.dataset.p]); for (const o of document.querySelectorAll(".seg button")) o.setAttribute("aria-pressed", o === b); render(); });
+  render();
+}
+start();
+</script>
+
+</body></html>
